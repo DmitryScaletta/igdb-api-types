@@ -1,0 +1,3032 @@
+[
+  {
+    "id": "age-rating",
+    "title": "Age Rating",
+    "description": "Age Rating according to various rating organisations",
+    "requestPath": "https://api.igdb.com/v4/age_ratings",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "The organization that has issued a specific rating"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "content_descriptions",
+        "Array of  Age Rating Content Description IDs",
+        ""
+      ],
+      [
+        "rating",
+        "Rating Enum",
+        "The title of an age rating"
+      ],
+      [
+        "rating_cover_url",
+        "String",
+        "The url for  the image of a age rating"
+      ],
+      [
+        "synopsis",
+        "String",
+        "A free text motivating a rating"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "ESRB",
+            "1"
+          ],
+          [
+            "PEGI",
+            "2"
+          ],
+          [
+            "CERO",
+            "3"
+          ],
+          [
+            "USK",
+            "4"
+          ],
+          [
+            "GRAC",
+            "5"
+          ],
+          [
+            "CLASS_IND",
+            "6"
+          ],
+          [
+            "ACB",
+            "7"
+          ]
+        ]
+      },
+      {
+        "name": "rating",
+        "values": [
+          [
+            "Three",
+            "1"
+          ],
+          [
+            "Seven",
+            "2"
+          ],
+          [
+            "Twelve",
+            "3"
+          ],
+          [
+            "Sixteen",
+            "4"
+          ],
+          [
+            "Eighteen",
+            "5"
+          ],
+          [
+            "RP",
+            "6"
+          ],
+          [
+            "EC",
+            "7"
+          ],
+          [
+            "E",
+            "8"
+          ],
+          [
+            "E10",
+            "9"
+          ],
+          [
+            "T",
+            "10"
+          ],
+          [
+            "M",
+            "11"
+          ],
+          [
+            "AO",
+            "12"
+          ],
+          [
+            "CERO_A",
+            "13"
+          ],
+          [
+            "CERO_B",
+            "14"
+          ],
+          [
+            "CERO_C",
+            "15"
+          ],
+          [
+            "CERO_D",
+            "16"
+          ],
+          [
+            "CERO_Z",
+            "17"
+          ],
+          [
+            "USK_0",
+            "18"
+          ],
+          [
+            "USK_6",
+            "19"
+          ],
+          [
+            "USK_12",
+            "20"
+          ],
+          [
+            "USK_18",
+            "21"
+          ],
+          [
+            "GRAC_ALL",
+            "22"
+          ],
+          [
+            "GRAC_Twelve",
+            "23"
+          ],
+          [
+            "GRAC_Fifteen",
+            "24"
+          ],
+          [
+            "GRAC_Eighteen",
+            "25"
+          ],
+          [
+            "GRAC_TESTING",
+            "26"
+          ],
+          [
+            "CLASS_IND_L",
+            "27"
+          ],
+          [
+            "CLASS_IND_Ten",
+            "28"
+          ],
+          [
+            "CLASS_IND_Twelve",
+            "29"
+          ],
+          [
+            "CLASS_IND_Fourteen",
+            "30"
+          ],
+          [
+            "CLASS_IND_Sixteen",
+            "31"
+          ],
+          [
+            "CLASS_IND_Eighteen",
+            "32"
+          ],
+          [
+            "ACB_G",
+            "33"
+          ],
+          [
+            "ACB_PG",
+            "34"
+          ],
+          [
+            "ACB_M",
+            "35"
+          ],
+          [
+            "ACB_MA15",
+            "36"
+          ],
+          [
+            "ACB_R18",
+            "37"
+          ],
+          [
+            "ACB_RC",
+            "38"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "age-rating-content-description",
+    "title": "Age Rating Content Description",
+    "description": "The organisation behind a specific rating",
+    "requestPath": "https://api.igdb.com/v4/age_rating_content_descriptions",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "description",
+        "String",
+        ""
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "PEGI",
+            "1"
+          ],
+          [
+            "ESRB",
+            "2"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "alternative-name",
+    "title": "Alternative Name",
+    "description": "Alternative and international game titles",
+    "requestPath": "https://api.igdb.com/v4/alternative_names",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "comment",
+        "String",
+        "A description of what kind of alternative name it is (Acronym, Working title, Japanese title etc)"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game this alternative name is associated with"
+      ],
+      [
+        "name",
+        "String",
+        "An alternative name"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "artwork",
+    "title": "Artwork",
+    "description": "official artworks (resolution and aspect ratio may vary)",
+    "requestPath": "https://api.igdb.com/v4/artworks",
+    "responseFields": [
+      [
+        "alpha_channel",
+        "boolean",
+        ""
+      ],
+      [
+        "animated",
+        "boolean",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game this artwork is associated with"
+      ],
+      [
+        "height",
+        "Integer",
+        "The height of the image in pixels"
+      ],
+      [
+        "image_id",
+        "String",
+        "The ID of the image used to construct an IGDB image link"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "width",
+        "Integer",
+        "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "character",
+    "title": "Character",
+    "description": "Video game characters",
+    "requestPath": "https://api.igdb.com/v4/characters",
+    "responseFields": [
+      [
+        "akas",
+        "Array of Strings",
+        "Alternative names for a character"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "country_name",
+        "String",
+        "A characters country of origin"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        "A text describing a character"
+      ],
+      [
+        "games",
+        "Array of Game IDs",
+        ""
+      ],
+      [
+        "gender",
+        "Gender Enum",
+        ""
+      ],
+      [
+        "mug_shot",
+        "Reference ID for  Character Mug Shot",
+        "An image depicting a character"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "species",
+        "Species Enum",
+        ""
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "gender",
+        "values": [
+          [
+            "Male",
+            "0"
+          ],
+          [
+            "Female",
+            "1"
+          ],
+          [
+            "Other",
+            "2"
+          ]
+        ]
+      },
+      {
+        "name": "species",
+        "values": [
+          [
+            "Human",
+            "1"
+          ],
+          [
+            "Alien",
+            "2"
+          ],
+          [
+            "Animal",
+            "3"
+          ],
+          [
+            "Android",
+            "4"
+          ],
+          [
+            "Unknown",
+            "5"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "character-mug-shot",
+    "title": "Character Mug Shot",
+    "description": "Images depicting game characters",
+    "requestPath": "https://api.igdb.com/v4/character_mug_shots",
+    "responseFields": [
+      [
+        "alpha_channel",
+        "boolean",
+        ""
+      ],
+      [
+        "animated",
+        "boolean",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "height",
+        "Integer",
+        "The height of the image in pixels"
+      ],
+      [
+        "image_id",
+        "String",
+        "The ID of the image used to construct an IGDB image link"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "width",
+        "Integer",
+        "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "collection",
+    "title": "Collection",
+    "description": "Collection, AKA Series",
+    "requestPath": "https://api.igdb.com/v4/collections",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "games",
+        "Array of Game IDs",
+        "The games that are associated with this collection"
+      ],
+      [
+        "name",
+        "String",
+        "Umbrella term for a collection of games"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "company",
+    "title": "Company",
+    "description": "Video game companies. Both publishers & developers",
+    "requestPath": "https://api.igdb.com/v4/companies",
+    "responseFields": [
+      [
+        "change_date",
+        "Unix Time Stamp",
+        "The data when a company got a new ID"
+      ],
+      [
+        "change_date_category",
+        "Change Date Category Enum",
+        ""
+      ],
+      [
+        "changed_company_id",
+        "Reference ID for  Company",
+        "The new ID for a company that has gone through a merger or restructuring"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "country",
+        "Integer",
+        "ISO 3166-1 country code"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        "A free text description of a company"
+      ],
+      [
+        "developed",
+        "Array of  Game IDs",
+        "An array of games that a company has developed"
+      ],
+      [
+        "logo",
+        "Reference ID for  Company Logo",
+        "The company’s logo"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "parent",
+        "Reference ID for  Company",
+        "A company with a controlling interest in a specific company"
+      ],
+      [
+        "published",
+        "Array of  Game IDs",
+        "An array of games that a company has published"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "start_date",
+        "Unix Time Stamp",
+        "The date a company was founded"
+      ],
+      [
+        "start_date_category",
+        "Start Date Category Enum",
+        ""
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "websites",
+        "Array of  Company Website IDs",
+        "The companies official websites"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "change_date_category",
+        "values": [
+          [
+            "YYYYMMMMDD",
+            "0"
+          ],
+          [
+            "YYYYMMMM",
+            "1"
+          ],
+          [
+            "YYYY",
+            "2"
+          ],
+          [
+            "YYYYQ1",
+            "3"
+          ],
+          [
+            "YYYYQ2",
+            "4"
+          ],
+          [
+            "YYYYQ3",
+            "5"
+          ],
+          [
+            "YYYYQ4",
+            "6"
+          ],
+          [
+            "TBD",
+            "7"
+          ]
+        ]
+      },
+      {
+        "name": "start_date_category",
+        "values": [
+          [
+            "YYYYMMMMDD",
+            "0"
+          ],
+          [
+            "YYYYMMMM",
+            "1"
+          ],
+          [
+            "YYYY",
+            "2"
+          ],
+          [
+            "YYYYQ1",
+            "3"
+          ],
+          [
+            "YYYYQ2",
+            "4"
+          ],
+          [
+            "YYYYQ3",
+            "5"
+          ],
+          [
+            "YYYYQ4",
+            "6"
+          ],
+          [
+            "TBD",
+            "7"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "company-logo",
+    "title": "Company Logo",
+    "description": "The logos of developers and publishers",
+    "requestPath": "https://api.igdb.com/v4/company_logos",
+    "responseFields": [
+      [
+        "alpha_channel",
+        "boolean",
+        ""
+      ],
+      [
+        "animated",
+        "boolean",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "height",
+        "Integer",
+        "The height of the image in pixels"
+      ],
+      [
+        "image_id",
+        "String",
+        "The ID of the image used to construct an IGDB image link"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "width",
+        "Integer",
+        "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "company-website",
+    "title": "Company Website",
+    "description": "Company Website",
+    "requestPath": "https://api.igdb.com/v4/company_websites",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "The service this website links to"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "trusted",
+        "boolean",
+        ""
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "official",
+            "1"
+          ],
+          [
+            "wikia",
+            "2"
+          ],
+          [
+            "wikipedia",
+            "3"
+          ],
+          [
+            "facebook",
+            "4"
+          ],
+          [
+            "twitter",
+            "5"
+          ],
+          [
+            "twitch",
+            "6"
+          ],
+          [
+            "instagram",
+            "8"
+          ],
+          [
+            "youtube",
+            "9"
+          ],
+          [
+            "iphone",
+            "10"
+          ],
+          [
+            "ipad",
+            "11"
+          ],
+          [
+            "android",
+            "12"
+          ],
+          [
+            "steam",
+            "13"
+          ],
+          [
+            "reddit",
+            "14"
+          ],
+          [
+            "itch",
+            "15"
+          ],
+          [
+            "epicgames",
+            "16"
+          ],
+          [
+            "gog",
+            "17"
+          ],
+          [
+            "discord",
+            "18"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cover",
+    "title": "Cover",
+    "description": "The cover art of games",
+    "requestPath": "https://api.igdb.com/v4/covers",
+    "responseFields": [
+      [
+        "alpha_channel",
+        "boolean",
+        ""
+      ],
+      [
+        "animated",
+        "boolean",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game this cover is associated with"
+      ],
+      [
+        "height",
+        "Integer",
+        "The height of the image in pixels"
+      ],
+      [
+        "image_id",
+        "String",
+        "The ID of the image used to construct an IGDB image link"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "width",
+        "Integer",
+        "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "external-game",
+    "title": "External Game",
+    "description": "Game IDs on other services",
+    "requestPath": "https://api.igdb.com/v4/external_games",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "The id of the other service"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "countries",
+        "Array of Integers",
+        "The ISO country code of the external game product."
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The IGDB ID of the game"
+      ],
+      [
+        "media",
+        "Media Enum",
+        "The media of the external game."
+      ],
+      [
+        "name",
+        "String",
+        "The name of the game according to the other service"
+      ],
+      [
+        "platform",
+        "Reference ID for Platform",
+        "The platform of the external game product."
+      ],
+      [
+        "uid",
+        "String",
+        "The other services ID for this game"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "year",
+        "Integer",
+        "The year in full (2018)"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "steam",
+            "1"
+          ],
+          [
+            "gog",
+            "5"
+          ],
+          [
+            "youtube",
+            "10"
+          ],
+          [
+            "microsoft",
+            "11"
+          ],
+          [
+            "apple",
+            "13"
+          ],
+          [
+            "twitch",
+            "14"
+          ],
+          [
+            "android",
+            "15"
+          ],
+          [
+            "amazon_asin",
+            "20"
+          ],
+          [
+            "amazon_luna",
+            "22"
+          ],
+          [
+            "amazon_adg",
+            "23"
+          ],
+          [
+            "epic_game_store",
+            "26"
+          ],
+          [
+            "oculus",
+            "28"
+          ]
+        ]
+      },
+      {
+        "name": "media",
+        "values": [
+          [
+            "digital",
+            "1"
+          ],
+          [
+            "physical",
+            "2"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "franchise",
+    "title": "Franchise",
+    "description": "A list of video game franchises such as Star Wars.",
+    "requestPath": "https://api.igdb.com/v4/franchises",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "games",
+        "Array of Game IDs",
+        "The games that are associated with this franchise"
+      ],
+      [
+        "name",
+        "String",
+        "The name of the franchise"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game",
+    "title": "Game",
+    "description": "Video Games!",
+    "requestPath": "https://api.igdb.com/v4/games",
+    "responseFields": [
+      [
+        "age_ratings",
+        "Array of  Age Rating IDs",
+        "The PEGI rating"
+      ],
+      [
+        "aggregated_rating",
+        "Double",
+        "Rating based on external critic scores"
+      ],
+      [
+        "aggregated_rating_count",
+        "Integer",
+        "Number of external critic scores"
+      ],
+      [
+        "alternative_names",
+        "Array of Alternative Name IDs",
+        "Alternative names for this game"
+      ],
+      [
+        "artworks",
+        "Array of Artwork IDs",
+        "Artworks of this game"
+      ],
+      [
+        "bundles",
+        "Array of  Game IDs",
+        "The bundles this game is a part of"
+      ],
+      [
+        "category",
+        "Category Enum",
+        "The category of this game"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "collection",
+        "Reference ID for Collection",
+        "The series the game belongs to"
+      ],
+      [
+        "cover",
+        "Reference ID for Cover",
+        "The cover of this game"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "dlcs",
+        "Array of  Game IDs",
+        "DLCs for this game"
+      ],
+      [
+        "expanded_games",
+        "Array of  Game IDs",
+        "Expanded games of this game"
+      ],
+      [
+        "expansions",
+        "Array of  Game IDs",
+        "Expansions of this game"
+      ],
+      [
+        "external_games",
+        "Array of External Game IDs",
+        "External IDs this game has on other services"
+      ],
+      [
+        "first_release_date",
+        "Unix Time Stamp",
+        "The first release date for this game"
+      ],
+      [
+        "follows",
+        "Integer",
+        "Number of people following a game"
+      ],
+      [
+        "forks",
+        "Array of  Game IDs",
+        "Forks of this game"
+      ],
+      [
+        "franchise",
+        "Reference ID for Franchise",
+        "The main franchise"
+      ],
+      [
+        "franchises",
+        "Array of Franchise IDs",
+        "Other franchises the game belongs to"
+      ],
+      [
+        "game_engines",
+        "Array of Game Engine IDs",
+        "The game engine used in this game"
+      ],
+      [
+        "game_modes",
+        "Array of Game Mode IDs",
+        "Modes of gameplay"
+      ],
+      [
+        "genres",
+        "Array of Genre IDs",
+        "Genres of the game"
+      ],
+      [
+        "hypes",
+        "Integer",
+        "Number of follows a game gets before release"
+      ],
+      [
+        "involved_companies",
+        "Array of Involved Company IDs",
+        "Companies who developed this game"
+      ],
+      [
+        "keywords",
+        "Array of Keyword IDs",
+        "Associated keywords"
+      ],
+      [
+        "multiplayer_modes",
+        "Array of Multiplayer Mode IDs",
+        "Multiplayer modes for this game"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "parent_game",
+        "Reference ID for  Game",
+        "If a DLC, expansion or part of a bundle, this is the main game or bundle"
+      ],
+      [
+        "platforms",
+        "Array of Platform IDs",
+        "Platforms this game was released on"
+      ],
+      [
+        "player_perspectives",
+        "Array of Player Perspective IDs",
+        "The main perspective of the player"
+      ],
+      [
+        "ports",
+        "Array of  Game IDs",
+        "Ports of this game"
+      ],
+      [
+        "rating",
+        "Double",
+        "Average IGDB user rating"
+      ],
+      [
+        "rating_count",
+        "Integer",
+        "Total number of IGDB user ratings"
+      ],
+      [
+        "release_dates",
+        "Array of Release Date IDs",
+        "Release dates of this game"
+      ],
+      [
+        "remakes",
+        "Array of  Game IDs",
+        "Remakes of this game"
+      ],
+      [
+        "remasters",
+        "Array of  Game IDs",
+        "Remasters of this game"
+      ],
+      [
+        "screenshots",
+        "Array of Screenshot IDs",
+        "Screenshots of this game"
+      ],
+      [
+        "similar_games",
+        "Array of  Game IDs",
+        "Similar games"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "standalone_expansions",
+        "Array of  Game IDs",
+        "Standalone expansions of this game"
+      ],
+      [
+        "status",
+        "Status Enum",
+        "The status of the games release"
+      ],
+      [
+        "storyline",
+        "String",
+        "A short description of a games story"
+      ],
+      [
+        "summary",
+        "String",
+        "A description of the game"
+      ],
+      [
+        "tags",
+        "Array of Tag Numbers",
+        "Related entities in the IGDB API"
+      ],
+      [
+        "themes",
+        "Array of Theme IDs",
+        "Themes of the game"
+      ],
+      [
+        "total_rating",
+        "Double",
+        "Average rating based on both IGDB user and external critic scores"
+      ],
+      [
+        "total_rating_count",
+        "Integer",
+        "Total number of user and external critic scores"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "version_parent",
+        "Reference ID for  Game",
+        "If a version, this is the main game"
+      ],
+      [
+        "version_title",
+        "String",
+        "Title of this version (i.e Gold edition)"
+      ],
+      [
+        "videos",
+        "Array of  Game Video IDs",
+        "Videos of this game"
+      ],
+      [
+        "websites",
+        "Array of  Website IDs",
+        "Websites associated with this game"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "main_game",
+            "0"
+          ],
+          [
+            "dlc_addon",
+            "1"
+          ],
+          [
+            "expansion",
+            "2"
+          ],
+          [
+            "bundle",
+            "3"
+          ],
+          [
+            "standalone_expansion",
+            "4"
+          ],
+          [
+            "mod",
+            "5"
+          ],
+          [
+            "episode",
+            "6"
+          ],
+          [
+            "season",
+            "7"
+          ],
+          [
+            "remake",
+            "8"
+          ],
+          [
+            "remaster",
+            "9"
+          ],
+          [
+            "expanded_game",
+            "10"
+          ],
+          [
+            "port",
+            "11"
+          ],
+          [
+            "fork",
+            "12"
+          ]
+        ]
+      },
+      {
+        "name": "status",
+        "values": [
+          [
+            "released",
+            "0"
+          ],
+          [
+            "alpha",
+            "2"
+          ],
+          [
+            "beta",
+            "3"
+          ],
+          [
+            "early_access",
+            "4"
+          ],
+          [
+            "offline",
+            "5"
+          ],
+          [
+            "cancelled",
+            "6"
+          ],
+          [
+            "rumored",
+            "7"
+          ],
+          [
+            "delisted",
+            "8"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "game-engine",
+    "title": "Game Engine",
+    "description": "Video game engines such as unreal engine.",
+    "requestPath": "https://api.igdb.com/v4/game_engines",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "companies",
+        "Array of Company IDs",
+        "Companies who used this game engine"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        "Description of the game engine"
+      ],
+      [
+        "logo",
+        "Reference ID for  Game Engine Logo",
+        "Logo of the game engine"
+      ],
+      [
+        "name",
+        "String",
+        "Name of the game engine"
+      ],
+      [
+        "platforms",
+        "Array of Platform IDs",
+        "Platforms this game engine was deployed on"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game-engine-logo",
+    "title": "Game Engine Logo",
+    "description": "The logos of game engines",
+    "requestPath": "https://api.igdb.com/v4/game_engine_logos",
+    "responseFields": [
+      [
+        "alpha_channel",
+        "boolean",
+        ""
+      ],
+      [
+        "animated",
+        "boolean",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "height",
+        "Integer",
+        "The height of the image in pixels"
+      ],
+      [
+        "image_id",
+        "String",
+        "The ID of the image used to construct an IGDB image link"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "width",
+        "Integer",
+        "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game-mode",
+    "title": "Game Mode",
+    "description": "Single player, Multiplayer etc",
+    "requestPath": "https://api.igdb.com/v4/game_modes",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        "The name of the game mode"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game-version",
+    "title": "Game Version",
+    "description": "Details about game editions and versions.",
+    "requestPath": "https://api.igdb.com/v4/game_versions",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "features",
+        "Array of  Game Version Feature IDs",
+        "Features and descriptions of what makes each version/edition different from the main game"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game these versions/editions are of"
+      ],
+      [
+        "games",
+        "Array of Game IDs",
+        "Game Versions and Editions"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game-version-feature",
+    "title": "Game Version Feature",
+    "description": "Features and descriptions of what makes each version/edition different from the main game",
+    "requestPath": "https://api.igdb.com/v4/game_version_features",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "The category of the feature description"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "description",
+        "String",
+        "The description of the feature"
+      ],
+      [
+        "position",
+        "Integer",
+        "Position of this feature in the list of features"
+      ],
+      [
+        "title",
+        "String",
+        "The title of the feature"
+      ],
+      [
+        "values",
+        "Array of  Game Version Feature Value IDs",
+        "The bool/text value of the feature"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "boolean",
+            "0"
+          ],
+          [
+            "description",
+            "1"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "game-version-feature-value",
+    "title": "Game Version Feature Value",
+    "description": "The bool/text value of the feature",
+    "requestPath": "https://api.igdb.com/v4/game_version_feature_values",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The version/edition this value refers to"
+      ],
+      [
+        "game_feature",
+        "Reference ID for  Game Version Feature",
+        "The id of the game feature"
+      ],
+      [
+        "included_feature",
+        "Included Feature Enum",
+        "The boole value of this feature"
+      ],
+      [
+        "note",
+        "String",
+        "The text value of this feature"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "included_feature",
+        "values": [
+          [
+            "NOT_INCLUDED",
+            "0"
+          ],
+          [
+            "INCLUDED",
+            "1"
+          ],
+          [
+            "PRE_ORDER_ONLY",
+            "2"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "game-video",
+    "title": "Game Video",
+    "description": "A video associated with a game",
+    "requestPath": "https://api.igdb.com/v4/game_videos",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game this video is associated with"
+      ],
+      [
+        "name",
+        "String",
+        "The name of the video"
+      ],
+      [
+        "video_id",
+        "String",
+        "The external ID of the video (usually youtube)"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "genre",
+    "title": "Genre",
+    "description": "Genres of video game",
+    "requestPath": "https://api.igdb.com/v4/genres",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "involved-company",
+    "title": "Involved Company",
+    "description": "",
+    "requestPath": "https://api.igdb.com/v4/involved_companies",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "company",
+        "Reference ID for Company",
+        ""
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "developer",
+        "boolean",
+        ""
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        ""
+      ],
+      [
+        "porting",
+        "boolean",
+        ""
+      ],
+      [
+        "publisher",
+        "boolean",
+        ""
+      ],
+      [
+        "supporting",
+        "boolean",
+        ""
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "keyword",
+    "title": "Keyword",
+    "description": "Keywords are words or phrases that get tagged to a game such as “world war 2” or “steampunk”.",
+    "requestPath": "https://api.igdb.com/v4/keywords",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "multiplayer-mode",
+    "title": "Multiplayer Mode",
+    "description": "Data about the supported multiplayer types",
+    "requestPath": "https://api.igdb.com/v4/multiplayer_modes",
+    "responseFields": [
+      [
+        "campaigncoop",
+        "boolean",
+        "True if the game supports campaign coop"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "dropin",
+        "boolean",
+        "True if the game supports drop in/out multiplayer"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game this multiplayer mode is associated with"
+      ],
+      [
+        "lancoop",
+        "boolean",
+        "True if the game supports LAN coop"
+      ],
+      [
+        "offlinecoop",
+        "boolean",
+        "True if the game supports offline coop"
+      ],
+      [
+        "offlinecoopmax",
+        "Integer",
+        "Maximum number of offline players in offline coop"
+      ],
+      [
+        "offlinemax",
+        "Integer",
+        "Maximum number of players in offline multiplayer"
+      ],
+      [
+        "onlinecoop",
+        "boolean",
+        "True if the game supports online coop"
+      ],
+      [
+        "onlinecoopmax",
+        "Integer",
+        "Maximum number of online players in online coop"
+      ],
+      [
+        "onlinemax",
+        "Integer",
+        "Maximum number of players in online multiplayer"
+      ],
+      [
+        "platform",
+        "Reference ID for Platform",
+        "The platform this multiplayer mode refers to"
+      ],
+      [
+        "splitscreen",
+        "boolean",
+        "True if the game supports split screen, offline multiplayer"
+      ],
+      [
+        "splitscreenonline",
+        "boolean",
+        "True if the game supports split screen, online multiplayer"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "platform",
+    "title": "Platform",
+    "description": "The hardware used to run the game or game delivery network",
+    "requestPath": "https://api.igdb.com/v4/platforms",
+    "responseFields": [
+      [
+        "abbreviation",
+        "String",
+        "An abbreviation of the platform name"
+      ],
+      [
+        "alternative_name",
+        "String",
+        "An alternative name for the platform"
+      ],
+      [
+        "category",
+        "Category Enum",
+        "A physical or virtual category of the platform"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "generation",
+        "Integer",
+        "The generation of the platform"
+      ],
+      [
+        "name",
+        "String",
+        "The name of the platform"
+      ],
+      [
+        "platform_family",
+        "Reference ID for Platform Family",
+        "The family of platforms this one belongs to"
+      ],
+      [
+        "platform_logo",
+        "Reference ID for Platform Logo",
+        "The logo of the first Version of this platform"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "summary",
+        "String",
+        "The summary of the first Version of this platform"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "versions",
+        "Array of  Platform Version IDs",
+        "Associated versions of this platform"
+      ],
+      [
+        "websites",
+        "Array of  Platform Website IDs",
+        "The main website"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "console",
+            "1"
+          ],
+          [
+            "arcade",
+            "2"
+          ],
+          [
+            "platform",
+            "3"
+          ],
+          [
+            "operating_system",
+            "4"
+          ],
+          [
+            "portable_console",
+            "5"
+          ],
+          [
+            "computer",
+            "6"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "platform-family",
+    "title": "Platform Family",
+    "description": "A collection of closely related platforms",
+    "requestPath": "https://api.igdb.com/v4/platform_families",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "name",
+        "String",
+        "The name of the platform family"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "platform-logo",
+    "title": "Platform Logo",
+    "description": "Logo for a platform",
+    "requestPath": "https://api.igdb.com/v4/platform_logos",
+    "responseFields": [
+      [
+        "alpha_channel",
+        "boolean",
+        ""
+      ],
+      [
+        "animated",
+        "boolean",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "height",
+        "Integer",
+        "The height of the image in pixels"
+      ],
+      [
+        "image_id",
+        "String",
+        "The ID of the image used to construct an IGDB image link"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "width",
+        "Integer",
+        "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "platform-version",
+    "title": "Platform Version",
+    "description": "",
+    "requestPath": "https://api.igdb.com/v4/platform_versions",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "companies",
+        "Array of  Platform Version Company IDs",
+        "Who developed this platform version"
+      ],
+      [
+        "connectivity",
+        "String",
+        "The network capabilities"
+      ],
+      [
+        "cpu",
+        "String",
+        "The integrated control processing unit"
+      ],
+      [
+        "graphics",
+        "String",
+        "The graphics chipset"
+      ],
+      [
+        "main_manufacturer",
+        "Reference ID for  Platform Version Company",
+        "Who manufactured this version of the platform"
+      ],
+      [
+        "media",
+        "String",
+        "The type of media this version accepted"
+      ],
+      [
+        "memory",
+        "String",
+        "How much memory there is"
+      ],
+      [
+        "name",
+        "String",
+        "The name of the platform version"
+      ],
+      [
+        "os",
+        "String",
+        "The operating system installed on the platform version"
+      ],
+      [
+        "output",
+        "String",
+        "The output video rate"
+      ],
+      [
+        "platform_logo",
+        "Reference ID for Platform Logo",
+        "The logo of this platform version"
+      ],
+      [
+        "platform_version_release_dates",
+        "Array of Platform Version Release Date IDs",
+        "When this platform was released"
+      ],
+      [
+        "resolutions",
+        "String",
+        "The maximum resolution"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "sound",
+        "String",
+        "The sound chipset"
+      ],
+      [
+        "storage",
+        "String",
+        "How much storage there is"
+      ],
+      [
+        "summary",
+        "String",
+        "A short summary"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "platform-version-company",
+    "title": "Platform Version Company",
+    "description": "A platform developer",
+    "requestPath": "https://api.igdb.com/v4/platform_version_companies",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "comment",
+        "String",
+        "Any notable comments about the developer"
+      ],
+      [
+        "company",
+        "Reference ID for Company",
+        "The company responsible for developing this platform version"
+      ],
+      [
+        "developer",
+        "boolean",
+        ""
+      ],
+      [
+        "manufacturer",
+        "boolean",
+        ""
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "platform-version-release-date",
+    "title": "Platform Version Release Date",
+    "description": "A handy endpoint that extends platform release dates. Used to dig deeper into release dates, platforms and versions.",
+    "requestPath": "https://api.igdb.com/v4/platform_version_release_dates",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "The format of the release date"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "date",
+        "Unix Time Stamp",
+        "The release date"
+      ],
+      [
+        "human",
+        "String",
+        "A human readable version of the release date"
+      ],
+      [
+        "m",
+        "Integer",
+        "The month as an integer starting at 1 (January)"
+      ],
+      [
+        "platform_version",
+        "Reference ID for Platform Version",
+        "The platform this release date is for"
+      ],
+      [
+        "region",
+        "Region Enum",
+        "The region of the release"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "y",
+        "Integer",
+        "The year in full (2018)"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "YYYYMMMMDD",
+            "0"
+          ],
+          [
+            "YYYYMMMM",
+            "1"
+          ],
+          [
+            "YYYY",
+            "2"
+          ],
+          [
+            "YYYYQ1",
+            "3"
+          ],
+          [
+            "YYYYQ2",
+            "4"
+          ],
+          [
+            "YYYYQ3",
+            "5"
+          ],
+          [
+            "YYYYQ4",
+            "6"
+          ],
+          [
+            "TBD",
+            "7"
+          ]
+        ]
+      },
+      {
+        "name": "region",
+        "values": [
+          [
+            "europe",
+            "1"
+          ],
+          [
+            "north_america",
+            "2"
+          ],
+          [
+            "australia",
+            "3"
+          ],
+          [
+            "new_zealand",
+            "4"
+          ],
+          [
+            "japan",
+            "5"
+          ],
+          [
+            "china",
+            "6"
+          ],
+          [
+            "asia",
+            "7"
+          ],
+          [
+            "worldwide",
+            "8"
+          ],
+          [
+            "korea",
+            "9"
+          ],
+          [
+            "brazil",
+            "10"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "platform-website",
+    "title": "Platform Website",
+    "description": "The main website for the platform",
+    "requestPath": "https://api.igdb.com/v4/platform_websites",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "The service this website links to"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "trusted",
+        "boolean",
+        ""
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "official",
+            "1"
+          ],
+          [
+            "wikia",
+            "2"
+          ],
+          [
+            "wikipedia",
+            "3"
+          ],
+          [
+            "facebook",
+            "4"
+          ],
+          [
+            "twitter",
+            "5"
+          ],
+          [
+            "twitch",
+            "6"
+          ],
+          [
+            "instagram",
+            "8"
+          ],
+          [
+            "youtube",
+            "9"
+          ],
+          [
+            "iphone",
+            "10"
+          ],
+          [
+            "ipad",
+            "11"
+          ],
+          [
+            "android",
+            "12"
+          ],
+          [
+            "steam",
+            "13"
+          ],
+          [
+            "reddit",
+            "14"
+          ],
+          [
+            "discord",
+            "15"
+          ],
+          [
+            "google_plus",
+            "16"
+          ],
+          [
+            "tumblr",
+            "17"
+          ],
+          [
+            "linkedin",
+            "18"
+          ],
+          [
+            "pinterest",
+            "19"
+          ],
+          [
+            "soundcloud",
+            "20"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "player-perspective",
+    "title": "Player Perspective",
+    "description": "Player perspectives describe the view/perspective of the player in a video game.",
+    "requestPath": "https://api.igdb.com/v4/player_perspectives",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "release-date",
+    "title": "Release Date",
+    "description": "A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions.",
+    "requestPath": "https://api.igdb.com/v4/release_dates",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "The format category of the release date"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "date",
+        "Unix Time Stamp",
+        "The date of the release"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        ""
+      ],
+      [
+        "human",
+        "String",
+        "A human readable representation of the date"
+      ],
+      [
+        "m",
+        "Integer",
+        "The month as an integer starting at 1 (January)"
+      ],
+      [
+        "platform",
+        "Reference ID for Platform",
+        "The platform of the release"
+      ],
+      [
+        "region",
+        "Region Enum",
+        "The region of the release"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "y",
+        "Integer",
+        "The year in full (2018)"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "YYYYMMMMDD",
+            "0"
+          ],
+          [
+            "YYYYMMMM",
+            "1"
+          ],
+          [
+            "YYYY",
+            "2"
+          ],
+          [
+            "YYYYQ1",
+            "3"
+          ],
+          [
+            "YYYYQ2",
+            "4"
+          ],
+          [
+            "YYYYQ3",
+            "5"
+          ],
+          [
+            "YYYYQ4",
+            "6"
+          ],
+          [
+            "TBD",
+            "7"
+          ]
+        ]
+      },
+      {
+        "name": "region",
+        "values": [
+          [
+            "europe",
+            "1"
+          ],
+          [
+            "north_america",
+            "2"
+          ],
+          [
+            "australia",
+            "3"
+          ],
+          [
+            "new_zealand",
+            "4"
+          ],
+          [
+            "japan",
+            "5"
+          ],
+          [
+            "china",
+            "6"
+          ],
+          [
+            "asia",
+            "7"
+          ],
+          [
+            "worldwide",
+            "8"
+          ],
+          [
+            "korea",
+            "9"
+          ],
+          [
+            "brazil",
+            "10"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "screenshot",
+    "title": "Screenshot",
+    "description": "Screenshots of games",
+    "requestPath": "https://api.igdb.com/v4/screenshots",
+    "responseFields": [
+      [
+        "alpha_channel",
+        "boolean",
+        ""
+      ],
+      [
+        "animated",
+        "boolean",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game this video is associated with"
+      ],
+      [
+        "height",
+        "Integer",
+        "The height of the image in pixels"
+      ],
+      [
+        "image_id",
+        "String",
+        "The ID of the image used to construct an IGDB image link"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "width",
+        "Integer",
+        "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "search",
+    "title": "Search",
+    "description": "",
+    "requestPath": "https://api.igdb.com/v4/search",
+    "responseFields": [
+      [
+        "alternative_name",
+        "String",
+        ""
+      ],
+      [
+        "character",
+        "Reference ID for Character",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "collection",
+        "Reference ID for Collection",
+        ""
+      ],
+      [
+        "company",
+        "Reference ID for Company",
+        ""
+      ],
+      [
+        "description",
+        "String",
+        ""
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        ""
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "platform",
+        "Reference ID for Platform",
+        ""
+      ],
+      [
+        "published_at",
+        "Unix Time Stamp",
+        "The date this item was initially published by the third party"
+      ],
+      [
+        "test_dummy",
+        "Reference ID for Test Dummy",
+        ""
+      ],
+      [
+        "theme",
+        "Reference ID for Theme",
+        ""
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "theme",
+    "title": "Theme",
+    "description": "Video game themes",
+    "requestPath": "https://api.igdb.com/v4/themes",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "Unix Time Stamp",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "Unix Time Stamp",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "website",
+    "title": "Website",
+    "description": "A website url, usually associated with a game",
+    "requestPath": "https://api.igdb.com/v4/websites",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "The service this website links to"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game this website is associated with"
+      ],
+      [
+        "trusted",
+        "boolean",
+        ""
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "official",
+            "1"
+          ],
+          [
+            "wikia",
+            "2"
+          ],
+          [
+            "wikipedia",
+            "3"
+          ],
+          [
+            "facebook",
+            "4"
+          ],
+          [
+            "twitter",
+            "5"
+          ],
+          [
+            "twitch",
+            "6"
+          ],
+          [
+            "instagram",
+            "8"
+          ],
+          [
+            "youtube",
+            "9"
+          ],
+          [
+            "iphone",
+            "10"
+          ],
+          [
+            "ipad",
+            "11"
+          ],
+          [
+            "android",
+            "12"
+          ],
+          [
+            "steam",
+            "13"
+          ],
+          [
+            "reddit",
+            "14"
+          ],
+          [
+            "itch",
+            "15"
+          ],
+          [
+            "epicgames",
+            "16"
+          ],
+          [
+            "gog",
+            "17"
+          ],
+          [
+            "discord",
+            "18"
+          ]
+        ]
+      }
+    ]
+  }
+]
