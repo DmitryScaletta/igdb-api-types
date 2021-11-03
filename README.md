@@ -2,6 +2,12 @@
 
 TypeScript type definitions for IGDB API endpoint responses.
 
+All types are generated automatically by parsing the [IGDB API docs](https://api-docs.igdb.com/) page.
+
+## Scripts
+
+`npm run build` - generate type definitions.
+
 ## Example
 
 ```ts
