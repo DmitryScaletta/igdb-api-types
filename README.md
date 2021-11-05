@@ -14,170 +14,172 @@ All types are generated automatically by parsing the [IGDB API docs](https://api
 /**
  * Video Games!
  *
- * @endpoint https://api.igdb.com/v4/games
+ * https://api.igdb.com/v4/games
  * @see https://api-docs.igdb.com/#game
  */
 export interface Game {
+  id: number;
+
   /** The PEGI rating */
-  age_ratings: number[] | Partial<AgeRating>[];
+  age_ratings?: number[] | AgeRating[];
 
   /** Rating based on external critic scores */
-  aggregated_rating: number;
+  aggregated_rating?: number;
 
   /** Number of external critic scores */
-  aggregated_rating_count: number;
+  aggregated_rating_count?: number;
 
   /** Alternative names for this game */
-  alternative_names: number[] | Partial<AlternativeName>[];
+  alternative_names?: number[] | AlternativeName[];
 
   /** Artworks of this game */
-  artworks: number[] | Partial<Artwork>[];
+  artworks?: number[] | Artwork[];
 
   /** The bundles this game is a part of */
-  bundles: number[] | Partial<Game>[];
+  bundles?: number[] | Game[];
 
   /** The category of this game */
-  category: GameCategory;
+  category?: GameCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The series the game belongs to */
-  collection: number | Partial<Collection>;
+  collection?: number | Collection;
 
   /** The cover of this game */
-  cover: number | Partial<Cover>;
+  cover?: number | Cover;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** DLCs for this game */
-  dlcs: number[] | Partial<Game>[];
+  dlcs?: number[] | Game[];
 
   /** Expanded games of this game */
-  expanded_games: number[] | Partial<Game>[];
+  expanded_games?: number[] | Game[];
 
   /** Expansions of this game */
-  expansions: number[] | Partial<Game>[];
+  expansions?: number[] | Game[];
 
   /** External IDs this game has on other services */
-  external_games: number[] | Partial<ExternalGame>[];
+  external_games?: number[] | ExternalGame[];
 
   /** The first release date for this game */
-  first_release_date: number;
+  first_release_date?: number;
 
   /** Number of people following a game */
-  follows: number;
+  follows?: number;
 
   /** Forks of this game */
-  forks: number[] | Partial<Game>[];
+  forks?: number[] | Game[];
 
   /** The main franchise */
-  franchise: number | Partial<Franchise>;
+  franchise?: number | Franchise;
 
   /** Other franchises the game belongs to */
-  franchises: number[] | Partial<Franchise>[];
+  franchises?: number[] | Franchise[];
 
   /** The game engine used in this game */
-  game_engines: number[] | Partial<GameEngine>[];
+  game_engines?: number[] | GameEngine[];
 
   /** Modes of gameplay */
-  game_modes: number[] | Partial<GameMode>[];
+  game_modes?: number[] | GameMode[];
 
   /** Genres of the game */
-  genres: number[] | Partial<Genre>[];
+  genres?: number[] | Genre[];
 
   /** Number of follows a game gets before release */
-  hypes: number;
+  hypes?: number;
 
   /** Companies who developed this game */
-  involved_companies: number[] | Partial<InvolvedCompany>[];
+  involved_companies?: number[] | InvolvedCompany[];
 
   /** Associated keywords */
-  keywords: number[] | Partial<Keyword>[];
+  keywords?: number[] | Keyword[];
 
   /** Multiplayer modes for this game */
-  multiplayer_modes: number[] | Partial<MultiplayerMode>[];
+  multiplayer_modes?: number[] | MultiplayerMode[];
 
-  name: string;
+  name?: string;
 
   /** If a DLC, expansion or part of a bundle, this is the main game or bundle */
-  parent_game: number | Partial<Game>;
+  parent_game?: number | Game;
 
   /** Platforms this game was released on */
-  platforms: number[] | Partial<Platform>[];
+  platforms?: number[] | Platform[];
 
   /** The main perspective of the player */
-  player_perspectives: number[] | Partial<PlayerPerspective>[];
+  player_perspectives?: number[] | PlayerPerspective[];
 
   /** Ports of this game */
-  ports: number[] | Partial<Game>[];
+  ports?: number[] | Game[];
 
   /** Average IGDB user rating */
-  rating: number;
+  rating?: number;
 
   /** Total number of IGDB user ratings */
-  rating_count: number;
+  rating_count?: number;
 
   /** Release dates of this game */
-  release_dates: number[] | Partial<ReleaseDate>[];
+  release_dates?: number[] | ReleaseDate[];
 
   /** Remakes of this game */
-  remakes: number[] | Partial<Game>[];
+  remakes?: number[] | Game[];
 
   /** Remasters of this game */
-  remasters: number[] | Partial<Game>[];
+  remasters?: number[] | Game[];
 
   /** Screenshots of this game */
-  screenshots: number[] | Partial<Screenshot>[];
+  screenshots?: number[] | Screenshot[];
 
   /** Similar games */
-  similar_games: number[] | Partial<Game>[];
+  similar_games?: number[] | Game[];
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** Standalone expansions of this game */
-  standalone_expansions: number[] | Partial<Game>[];
+  standalone_expansions?: number[] | Game[];
 
   /** The status of the games release */
-  status: GameStatus;
+  status?: GameStatus;
 
   /** A short description of a games story */
-  storyline: string;
+  storyline?: string;
 
   /** A description of the game */
-  summary: string;
+  summary?: string;
 
   /** Related entities in the IGDB API */
-  tags: number[];
+  tags?: number[];
 
   /** Themes of the game */
-  themes: number[] | Partial<Theme>[];
+  themes?: number[] | Theme[];
 
   /** Average rating based on both IGDB user and external critic scores */
-  total_rating: number;
+  total_rating?: number;
 
   /** Total number of user and external critic scores */
-  total_rating_count: number;
+  total_rating_count?: number;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** If a version, this is the main game */
-  version_parent: number | Partial<Game>;
+  version_parent?: number | Game;
 
   /** Title of this version (i.e Gold edition) */
-  version_title: string;
+  version_title?: string;
 
   /** Videos of this game */
-  videos: number[] | Partial<GameVideo>[];
+  videos?: number[] | GameVideo[];
 
   /** Websites associated with this game */
-  websites: number[] | Partial<Website>[];
+  websites?: number[] | Website[];
 }
 
 /** @see https://api-docs.igdb.com/#game-enums */
