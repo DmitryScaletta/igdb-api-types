@@ -32,11 +32,12 @@ const generateTypes = async (api) => {
       result += " *\n";
     }
 
-    result += ` * @endpoint ${requestPath}\n`;
+    result += ` * ${requestPath}\n`;
     result += ` * @see https://api-docs.igdb.com/#${id}\n`;
-    result += ` */\n`;
+    result += " */\n";
 
     result += `export interface ${title.replaceAll(" ", "")} {\n`;
+    result += "  id: number;\n\n";
 
     for (const [name, type, description] of responseFields) {
       let finalType = TYPES[type] || type.replaceAll(" ", "");
@@ -54,7 +55,7 @@ const generateTypes = async (api) => {
           .replace(" IDs", "")
           .replaceAll(" ", "");
 
-        finalType = `number[] | Partial<${referenceType}>[]`;
+        finalType = `number[] | ${referenceType}[]`;
       }
 
       if (type.startsWith("Reference ID for ")) {
@@ -62,7 +63,7 @@ const generateTypes = async (api) => {
           .replace("Reference ID for ", "")
           .replaceAll(" ", "");
 
-        finalType = `number | Partial<${referenceType}>`;
+        finalType = `number | ${referenceType}`;
       }
 
       // https://api-docs.igdb.com/#search
@@ -74,7 +75,7 @@ const generateTypes = async (api) => {
         result += `  /** ${description} */\n`;
       }
 
-      result += `  ${name}: ${finalType};\n\n`;
+      result += `  ${name}?: ${finalType};\n\n`;
     }
 
     result = result.slice(0, -1);
