@@ -1,26 +1,28 @@
 /**
  * Age Rating according to various rating organisations
  *
- * @endpoint https://api.igdb.com/v4/age_ratings
+ * https://api.igdb.com/v4/age_ratings
  * @see https://api-docs.igdb.com/#age-rating
  */
 export interface AgeRating {
+  id: number;
+
   /** The organization that has issued a specific rating */
-  category: AgeRatingCategory;
+  category?: AgeRatingCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
-  content_descriptions: number[] | Partial<AgeRatingContentDescription>[];
+  content_descriptions?: number[] | AgeRatingContentDescription[];
 
   /** The title of an age rating */
-  rating: AgeRatingRating;
+  rating?: AgeRatingRating;
 
   /** The url for  the image of a age rating */
-  rating_cover_url: string;
+  rating_cover_url?: string;
 
   /** A free text motivating a rating */
-  synopsis: string;
+  synopsis?: string;
 }
 
 /** @see https://api-docs.igdb.com/#age-rating-enums */
@@ -79,16 +81,18 @@ export enum AgeRatingRating {
 /**
  * The organisation behind a specific rating
  *
- * @endpoint https://api.igdb.com/v4/age_rating_content_descriptions
+ * https://api.igdb.com/v4/age_rating_content_descriptions
  * @see https://api-docs.igdb.com/#age-rating-content-description
  */
 export interface AgeRatingContentDescription {
-  category: AgeRatingContentDescriptionCategory;
+  id: number;
+
+  category?: AgeRatingContentDescriptionCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
-  description: string;
+  description?: string;
 }
 
 /** @see https://api-docs.igdb.com/#age-rating-content-description-enums */
@@ -100,94 +104,100 @@ export enum AgeRatingContentDescriptionCategory {
 /**
  * Alternative and international game titles
  *
- * @endpoint https://api.igdb.com/v4/alternative_names
+ * https://api.igdb.com/v4/alternative_names
  * @see https://api-docs.igdb.com/#alternative-name
  */
 export interface AlternativeName {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** A description of what kind of alternative name it is (Acronym, Working title, Japanese title etc) */
-  comment: string;
+  comment?: string;
 
   /** The game this alternative name is associated with */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** An alternative name */
-  name: string;
+  name?: string;
 }
 
 /**
  * official artworks (resolution and aspect ratio may vary)
  *
- * @endpoint https://api.igdb.com/v4/artworks
+ * https://api.igdb.com/v4/artworks
  * @see https://api-docs.igdb.com/#artwork
  */
 export interface Artwork {
-  alpha_channel: boolean;
+  id: number;
 
-  animated: boolean;
+  alpha_channel?: boolean;
+
+  animated?: boolean;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The game this artwork is associated with */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** The height of the image in pixels */
-  height: number;
+  height?: number;
 
   /** The ID of the image used to construct an IGDB image link */
-  image_id: string;
+  image_id?: string;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The width of the image in pixels */
-  width: number;
+  width?: number;
 }
 
 /**
  * Video game characters
  *
- * @endpoint https://api.igdb.com/v4/characters
+ * https://api.igdb.com/v4/characters
  * @see https://api-docs.igdb.com/#character
  */
 export interface Character {
+  id: number;
+
   /** Alternative names for a character */
-  akas: string[];
+  akas?: string[];
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** A characters country of origin */
-  country_name: string;
+  country_name?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** A text describing a character */
-  description: string;
+  description?: string;
 
-  games: number[] | Partial<Game>[];
+  games?: number[] | Game[];
 
-  gender: CharacterGender;
+  gender?: CharacterGender;
 
   /** An image depicting a character */
-  mug_shot: number | Partial<CharacterMugShot>;
+  mug_shot?: number | CharacterMugShot;
 
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
-  species: CharacterSpecies;
+  species?: CharacterSpecies;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /** @see https://api-docs.igdb.com/#character-enums */
@@ -209,116 +219,122 @@ export enum CharacterSpecies {
 /**
  * Images depicting game characters
  *
- * @endpoint https://api.igdb.com/v4/character_mug_shots
+ * https://api.igdb.com/v4/character_mug_shots
  * @see https://api-docs.igdb.com/#character-mug-shot
  */
 export interface CharacterMugShot {
-  alpha_channel: boolean;
+  id: number;
 
-  animated: boolean;
+  alpha_channel?: boolean;
+
+  animated?: boolean;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The height of the image in pixels */
-  height: number;
+  height?: number;
 
   /** The ID of the image used to construct an IGDB image link */
-  image_id: string;
+  image_id?: string;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The width of the image in pixels */
-  width: number;
+  width?: number;
 }
 
 /**
  * Collection, AKA Series
  *
- * @endpoint https://api.igdb.com/v4/collections
+ * https://api.igdb.com/v4/collections
  * @see https://api-docs.igdb.com/#collection
  */
 export interface Collection {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** The games that are associated with this collection */
-  games: number[] | Partial<Game>[];
+  games?: number[] | Game[];
 
   /** Umbrella term for a collection of games */
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * Video game companies. Both publishers & developers
  *
- * @endpoint https://api.igdb.com/v4/companies
+ * https://api.igdb.com/v4/companies
  * @see https://api-docs.igdb.com/#company
  */
 export interface Company {
-  /** The data when a company got a new ID */
-  change_date: number;
+  id: number;
 
-  change_date_category: CompanyChangeDateCategory;
+  /** The data when a company got a new ID */
+  change_date?: number;
+
+  change_date_category?: CompanyChangeDateCategory;
 
   /** The new ID for a company that has gone through a merger or restructuring */
-  changed_company_id: number | Partial<Company>;
+  changed_company_id?: number | Company;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** ISO 3166-1 country code */
-  country: number;
+  country?: number;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** A free text description of a company */
-  description: string;
+  description?: string;
 
   /** An array of games that a company has developed */
-  developed: number[] | Partial<Game>[];
+  developed?: number[] | Game[];
 
   /** The company’s logo */
-  logo: number | Partial<CompanyLogo>;
+  logo?: number | CompanyLogo;
 
-  name: string;
+  name?: string;
 
   /** A company with a controlling interest in a specific company */
-  parent: number | Partial<Company>;
+  parent?: number | Company;
 
   /** An array of games that a company has published */
-  published: number[] | Partial<Game>[];
+  published?: number[] | Game[];
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The date a company was founded */
-  start_date: number;
+  start_date?: number;
 
-  start_date_category: CompanyStartDateCategory;
+  start_date_category?: CompanyStartDateCategory;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The companies official websites */
-  websites: number[] | Partial<CompanyWebsite>[];
+  websites?: number[] | CompanyWebsite[];
 }
 
 /** @see https://api-docs.igdb.com/#company-enums */
@@ -348,47 +364,51 @@ export enum CompanyStartDateCategory {
 /**
  * The logos of developers and publishers
  *
- * @endpoint https://api.igdb.com/v4/company_logos
+ * https://api.igdb.com/v4/company_logos
  * @see https://api-docs.igdb.com/#company-logo
  */
 export interface CompanyLogo {
-  alpha_channel: boolean;
+  id: number;
 
-  animated: boolean;
+  alpha_channel?: boolean;
+
+  animated?: boolean;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The height of the image in pixels */
-  height: number;
+  height?: number;
 
   /** The ID of the image used to construct an IGDB image link */
-  image_id: string;
+  image_id?: string;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The width of the image in pixels */
-  width: number;
+  width?: number;
 }
 
 /**
  * Company Website
  *
- * @endpoint https://api.igdb.com/v4/company_websites
+ * https://api.igdb.com/v4/company_websites
  * @see https://api-docs.igdb.com/#company-website
  */
 export interface CompanyWebsite {
+  id: number;
+
   /** The service this website links to */
-  category: CompanyWebsiteCategory;
+  category?: CompanyWebsiteCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
-  trusted: boolean;
+  trusted?: boolean;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /** @see https://api-docs.igdb.com/#company-website-enums */
@@ -415,75 +435,79 @@ export enum CompanyWebsiteCategory {
 /**
  * The cover art of games
  *
- * @endpoint https://api.igdb.com/v4/covers
+ * https://api.igdb.com/v4/covers
  * @see https://api-docs.igdb.com/#cover
  */
 export interface Cover {
-  alpha_channel: boolean;
+  id: number;
 
-  animated: boolean;
+  alpha_channel?: boolean;
+
+  animated?: boolean;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The game this cover is associated with */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** The height of the image in pixels */
-  height: number;
+  height?: number;
 
   /** The ID of the image used to construct an IGDB image link */
-  image_id: string;
+  image_id?: string;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The width of the image in pixels */
-  width: number;
+  width?: number;
 }
 
 /**
  * Game IDs on other services
  *
- * @endpoint https://api.igdb.com/v4/external_games
+ * https://api.igdb.com/v4/external_games
  * @see https://api-docs.igdb.com/#external-game
  */
 export interface ExternalGame {
+  id: number;
+
   /** The id of the other service */
-  category: ExternalGameCategory;
+  category?: ExternalGameCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The ISO country code of the external game product. */
-  countries: number[];
+  countries?: number[];
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** The IGDB ID of the game */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** The media of the external game. */
-  media: ExternalGameMedia;
+  media?: ExternalGameMedia;
 
   /** The name of the game according to the other service */
-  name: string;
+  name?: string;
 
   /** The platform of the external game product. */
-  platform: number | Partial<Platform>;
+  platform?: number | Platform;
 
   /** The other services ID for this game */
-  uid: string;
+  uid?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The year in full (2018) */
-  year: number;
+  year?: number;
 }
 
 /** @see https://api-docs.igdb.com/#external-game-enums */
@@ -511,199 +535,203 @@ export enum ExternalGameMedia {
 /**
  * A list of video game franchises such as Star Wars.
  *
- * @endpoint https://api.igdb.com/v4/franchises
+ * https://api.igdb.com/v4/franchises
  * @see https://api-docs.igdb.com/#franchise
  */
 export interface Franchise {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** The games that are associated with this franchise */
-  games: number[] | Partial<Game>[];
+  games?: number[] | Game[];
 
   /** The name of the franchise */
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * Video Games!
  *
- * @endpoint https://api.igdb.com/v4/games
+ * https://api.igdb.com/v4/games
  * @see https://api-docs.igdb.com/#game
  */
 export interface Game {
+  id: number;
+
   /** The PEGI rating */
-  age_ratings: number[] | Partial<AgeRating>[];
+  age_ratings?: number[] | AgeRating[];
 
   /** Rating based on external critic scores */
-  aggregated_rating: number;
+  aggregated_rating?: number;
 
   /** Number of external critic scores */
-  aggregated_rating_count: number;
+  aggregated_rating_count?: number;
 
   /** Alternative names for this game */
-  alternative_names: number[] | Partial<AlternativeName>[];
+  alternative_names?: number[] | AlternativeName[];
 
   /** Artworks of this game */
-  artworks: number[] | Partial<Artwork>[];
+  artworks?: number[] | Artwork[];
 
   /** The bundles this game is a part of */
-  bundles: number[] | Partial<Game>[];
+  bundles?: number[] | Game[];
 
   /** The category of this game */
-  category: GameCategory;
+  category?: GameCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The series the game belongs to */
-  collection: number | Partial<Collection>;
+  collection?: number | Collection;
 
   /** The cover of this game */
-  cover: number | Partial<Cover>;
+  cover?: number | Cover;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** DLCs for this game */
-  dlcs: number[] | Partial<Game>[];
+  dlcs?: number[] | Game[];
 
   /** Expanded games of this game */
-  expanded_games: number[] | Partial<Game>[];
+  expanded_games?: number[] | Game[];
 
   /** Expansions of this game */
-  expansions: number[] | Partial<Game>[];
+  expansions?: number[] | Game[];
 
   /** External IDs this game has on other services */
-  external_games: number[] | Partial<ExternalGame>[];
+  external_games?: number[] | ExternalGame[];
 
   /** The first release date for this game */
-  first_release_date: number;
+  first_release_date?: number;
 
   /** Number of people following a game */
-  follows: number;
+  follows?: number;
 
   /** Forks of this game */
-  forks: number[] | Partial<Game>[];
+  forks?: number[] | Game[];
 
   /** The main franchise */
-  franchise: number | Partial<Franchise>;
+  franchise?: number | Franchise;
 
   /** Other franchises the game belongs to */
-  franchises: number[] | Partial<Franchise>[];
+  franchises?: number[] | Franchise[];
 
   /** The game engine used in this game */
-  game_engines: number[] | Partial<GameEngine>[];
+  game_engines?: number[] | GameEngine[];
 
   /** Modes of gameplay */
-  game_modes: number[] | Partial<GameMode>[];
+  game_modes?: number[] | GameMode[];
 
   /** Genres of the game */
-  genres: number[] | Partial<Genre>[];
+  genres?: number[] | Genre[];
 
   /** Number of follows a game gets before release */
-  hypes: number;
+  hypes?: number;
 
   /** Companies who developed this game */
-  involved_companies: number[] | Partial<InvolvedCompany>[];
+  involved_companies?: number[] | InvolvedCompany[];
 
   /** Associated keywords */
-  keywords: number[] | Partial<Keyword>[];
+  keywords?: number[] | Keyword[];
 
   /** Multiplayer modes for this game */
-  multiplayer_modes: number[] | Partial<MultiplayerMode>[];
+  multiplayer_modes?: number[] | MultiplayerMode[];
 
-  name: string;
+  name?: string;
 
   /** If a DLC, expansion or part of a bundle, this is the main game or bundle */
-  parent_game: number | Partial<Game>;
+  parent_game?: number | Game;
 
   /** Platforms this game was released on */
-  platforms: number[] | Partial<Platform>[];
+  platforms?: number[] | Platform[];
 
   /** The main perspective of the player */
-  player_perspectives: number[] | Partial<PlayerPerspective>[];
+  player_perspectives?: number[] | PlayerPerspective[];
 
   /** Ports of this game */
-  ports: number[] | Partial<Game>[];
+  ports?: number[] | Game[];
 
   /** Average IGDB user rating */
-  rating: number;
+  rating?: number;
 
   /** Total number of IGDB user ratings */
-  rating_count: number;
+  rating_count?: number;
 
   /** Release dates of this game */
-  release_dates: number[] | Partial<ReleaseDate>[];
+  release_dates?: number[] | ReleaseDate[];
 
   /** Remakes of this game */
-  remakes: number[] | Partial<Game>[];
+  remakes?: number[] | Game[];
 
   /** Remasters of this game */
-  remasters: number[] | Partial<Game>[];
+  remasters?: number[] | Game[];
 
   /** Screenshots of this game */
-  screenshots: number[] | Partial<Screenshot>[];
+  screenshots?: number[] | Screenshot[];
 
   /** Similar games */
-  similar_games: number[] | Partial<Game>[];
+  similar_games?: number[] | Game[];
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** Standalone expansions of this game */
-  standalone_expansions: number[] | Partial<Game>[];
+  standalone_expansions?: number[] | Game[];
 
   /** The status of the games release */
-  status: GameStatus;
+  status?: GameStatus;
 
   /** A short description of a games story */
-  storyline: string;
+  storyline?: string;
 
   /** A description of the game */
-  summary: string;
+  summary?: string;
 
   /** Related entities in the IGDB API */
-  tags: number[];
+  tags?: number[];
 
   /** Themes of the game */
-  themes: number[] | Partial<Theme>[];
+  themes?: number[] | Theme[];
 
   /** Average rating based on both IGDB user and external critic scores */
-  total_rating: number;
+  total_rating?: number;
 
   /** Total number of user and external critic scores */
-  total_rating_count: number;
+  total_rating_count?: number;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** If a version, this is the main game */
-  version_parent: number | Partial<Game>;
+  version_parent?: number | Game;
 
   /** Title of this version (i.e Gold edition) */
-  version_title: string;
+  version_title?: string;
 
   /** Videos of this game */
-  videos: number[] | Partial<GameVideo>[];
+  videos?: number[] | GameVideo[];
 
   /** Websites associated with this game */
-  websites: number[] | Partial<Website>[];
+  websites?: number[] | Website[];
 }
 
 /** @see https://api-docs.igdb.com/#game-enums */
@@ -738,147 +766,157 @@ export enum GameStatus {
 /**
  * Video game engines such as unreal engine.
  *
- * @endpoint https://api.igdb.com/v4/game_engines
+ * https://api.igdb.com/v4/game_engines
  * @see https://api-docs.igdb.com/#game-engine
  */
 export interface GameEngine {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Companies who used this game engine */
-  companies: number[] | Partial<Company>[];
+  companies?: number[] | Company[];
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** Description of the game engine */
-  description: string;
+  description?: string;
 
   /** Logo of the game engine */
-  logo: number | Partial<GameEngineLogo>;
+  logo?: number | GameEngineLogo;
 
   /** Name of the game engine */
-  name: string;
+  name?: string;
 
   /** Platforms this game engine was deployed on */
-  platforms: number[] | Partial<Platform>[];
+  platforms?: number[] | Platform[];
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * The logos of game engines
  *
- * @endpoint https://api.igdb.com/v4/game_engine_logos
+ * https://api.igdb.com/v4/game_engine_logos
  * @see https://api-docs.igdb.com/#game-engine-logo
  */
 export interface GameEngineLogo {
-  alpha_channel: boolean;
+  id: number;
 
-  animated: boolean;
+  alpha_channel?: boolean;
+
+  animated?: boolean;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The height of the image in pixels */
-  height: number;
+  height?: number;
 
   /** The ID of the image used to construct an IGDB image link */
-  image_id: string;
+  image_id?: string;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The width of the image in pixels */
-  width: number;
+  width?: number;
 }
 
 /**
  * Single player, Multiplayer etc
  *
- * @endpoint https://api.igdb.com/v4/game_modes
+ * https://api.igdb.com/v4/game_modes
  * @see https://api-docs.igdb.com/#game-mode
  */
 export interface GameMode {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** The name of the game mode */
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * Details about game editions and versions.
  *
- * @endpoint https://api.igdb.com/v4/game_versions
+ * https://api.igdb.com/v4/game_versions
  * @see https://api-docs.igdb.com/#game-version
  */
 export interface GameVersion {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** Features and descriptions of what makes each version/edition different from the main game */
-  features: number[] | Partial<GameVersionFeature>[];
+  features?: number[] | GameVersionFeature[];
 
   /** The game these versions/editions are of */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** Game Versions and Editions */
-  games: number[] | Partial<Game>[];
+  games?: number[] | Game[];
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * Features and descriptions of what makes each version/edition different from the main game
  *
- * @endpoint https://api.igdb.com/v4/game_version_features
+ * https://api.igdb.com/v4/game_version_features
  * @see https://api-docs.igdb.com/#game-version-feature
  */
 export interface GameVersionFeature {
+  id: number;
+
   /** The category of the feature description */
-  category: GameVersionFeatureCategory;
+  category?: GameVersionFeatureCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The description of the feature */
-  description: string;
+  description?: string;
 
   /** Position of this feature in the list of features */
-  position: number;
+  position?: number;
 
   /** The title of the feature */
-  title: string;
+  title?: string;
 
   /** The bool/text value of the feature */
-  values: number[] | Partial<GameVersionFeatureValue>[];
+  values?: number[] | GameVersionFeatureValue[];
 }
 
 /** @see https://api-docs.igdb.com/#game-version-feature-enums */
@@ -890,24 +928,26 @@ export enum GameVersionFeatureCategory {
 /**
  * The bool/text value of the feature
  *
- * @endpoint https://api.igdb.com/v4/game_version_feature_values
+ * https://api.igdb.com/v4/game_version_feature_values
  * @see https://api-docs.igdb.com/#game-version-feature-value
  */
 export interface GameVersionFeatureValue {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The version/edition this value refers to */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** The id of the game feature */
-  game_feature: number | Partial<GameVersionFeature>;
+  game_feature?: number | GameVersionFeature;
 
   /** The boole value of this feature */
-  included_feature: GameVersionFeatureValueIncludedFeature;
+  included_feature?: GameVersionFeatureValueIncludedFeature;
 
   /** The text value of this feature */
-  note: string;
+  note?: string;
 }
 
 /** @see https://api-docs.igdb.com/#game-version-feature-value-enums */
@@ -920,201 +960,213 @@ export enum GameVersionFeatureValueIncludedFeature {
 /**
  * A video associated with a game
  *
- * @endpoint https://api.igdb.com/v4/game_videos
+ * https://api.igdb.com/v4/game_videos
  * @see https://api-docs.igdb.com/#game-video
  */
 export interface GameVideo {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The game this video is associated with */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** The name of the video */
-  name: string;
+  name?: string;
 
   /** The external ID of the video (usually youtube) */
-  video_id: string;
+  video_id?: string;
 }
 
 /**
  * Genres of video game
  *
- * @endpoint https://api.igdb.com/v4/genres
+ * https://api.igdb.com/v4/genres
  * @see https://api-docs.igdb.com/#genre
  */
 export interface Genre {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
- * @endpoint https://api.igdb.com/v4/involved_companies
+ * https://api.igdb.com/v4/involved_companies
  * @see https://api-docs.igdb.com/#involved-company
  */
 export interface InvolvedCompany {
-  /** Hash of the object */
-  checksum: string;
+  id: number;
 
-  company: number | Partial<Company>;
+  /** Hash of the object */
+  checksum?: string;
+
+  company?: number | Company;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
-  developer: boolean;
+  developer?: boolean;
 
-  game: number | Partial<Game>;
+  game?: number | Game;
 
-  porting: boolean;
+  porting?: boolean;
 
-  publisher: boolean;
+  publisher?: boolean;
 
-  supporting: boolean;
+  supporting?: boolean;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 }
 
 /**
  * Keywords are words or phrases that get tagged to a game such as “world war 2” or “steampunk”.
  *
- * @endpoint https://api.igdb.com/v4/keywords
+ * https://api.igdb.com/v4/keywords
  * @see https://api-docs.igdb.com/#keyword
  */
 export interface Keyword {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * Data about the supported multiplayer types
  *
- * @endpoint https://api.igdb.com/v4/multiplayer_modes
+ * https://api.igdb.com/v4/multiplayer_modes
  * @see https://api-docs.igdb.com/#multiplayer-mode
  */
 export interface MultiplayerMode {
+  id: number;
+
   /** True if the game supports campaign coop */
-  campaigncoop: boolean;
+  campaigncoop?: boolean;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** True if the game supports drop in/out multiplayer */
-  dropin: boolean;
+  dropin?: boolean;
 
   /** The game this multiplayer mode is associated with */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** True if the game supports LAN coop */
-  lancoop: boolean;
+  lancoop?: boolean;
 
   /** True if the game supports offline coop */
-  offlinecoop: boolean;
+  offlinecoop?: boolean;
 
   /** Maximum number of offline players in offline coop */
-  offlinecoopmax: number;
+  offlinecoopmax?: number;
 
   /** Maximum number of players in offline multiplayer */
-  offlinemax: number;
+  offlinemax?: number;
 
   /** True if the game supports online coop */
-  onlinecoop: boolean;
+  onlinecoop?: boolean;
 
   /** Maximum number of online players in online coop */
-  onlinecoopmax: number;
+  onlinecoopmax?: number;
 
   /** Maximum number of players in online multiplayer */
-  onlinemax: number;
+  onlinemax?: number;
 
   /** The platform this multiplayer mode refers to */
-  platform: number | Partial<Platform>;
+  platform?: number | Platform;
 
   /** True if the game supports split screen, offline multiplayer */
-  splitscreen: boolean;
+  splitscreen?: boolean;
 
   /** True if the game supports split screen, online multiplayer */
-  splitscreenonline: boolean;
+  splitscreenonline?: boolean;
 }
 
 /**
  * The hardware used to run the game or game delivery network
  *
- * @endpoint https://api.igdb.com/v4/platforms
+ * https://api.igdb.com/v4/platforms
  * @see https://api-docs.igdb.com/#platform
  */
 export interface Platform {
+  id: number;
+
   /** An abbreviation of the platform name */
-  abbreviation: string;
+  abbreviation?: string;
 
   /** An alternative name for the platform */
-  alternative_name: string;
+  alternative_name?: string;
 
   /** A physical or virtual category of the platform */
-  category: PlatformCategory;
+  category?: PlatformCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** The generation of the platform */
-  generation: number;
+  generation?: number;
 
   /** The name of the platform */
-  name: string;
+  name?: string;
 
   /** The family of platforms this one belongs to */
-  platform_family: number | Partial<PlatformFamily>;
+  platform_family?: number | PlatformFamily;
 
   /** The logo of the first Version of this platform */
-  platform_logo: number | Partial<PlatformLogo>;
+  platform_logo?: number | PlatformLogo;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The summary of the first Version of this platform */
-  summary: string;
+  summary?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** Associated versions of this platform */
-  versions: number[] | Partial<PlatformVersion>[];
+  versions?: number[] | PlatformVersion[];
 
   /** The main website */
-  websites: number[] | Partial<PlatformWebsite>[];
+  websites?: number[] | PlatformWebsite[];
 }
 
 /** @see https://api-docs.igdb.com/#platform-enums */
@@ -1130,167 +1182,177 @@ export enum PlatformCategory {
 /**
  * A collection of closely related platforms
  *
- * @endpoint https://api.igdb.com/v4/platform_families
+ * https://api.igdb.com/v4/platform_families
  * @see https://api-docs.igdb.com/#platform-family
  */
 export interface PlatformFamily {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The name of the platform family */
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 }
 
 /**
  * Logo for a platform
  *
- * @endpoint https://api.igdb.com/v4/platform_logos
+ * https://api.igdb.com/v4/platform_logos
  * @see https://api-docs.igdb.com/#platform-logo
  */
 export interface PlatformLogo {
-  alpha_channel: boolean;
+  id: number;
 
-  animated: boolean;
+  alpha_channel?: boolean;
+
+  animated?: boolean;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The height of the image in pixels */
-  height: number;
+  height?: number;
 
   /** The ID of the image used to construct an IGDB image link */
-  image_id: string;
+  image_id?: string;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The width of the image in pixels */
-  width: number;
+  width?: number;
 }
 
 /**
- * @endpoint https://api.igdb.com/v4/platform_versions
+ * https://api.igdb.com/v4/platform_versions
  * @see https://api-docs.igdb.com/#platform-version
  */
 export interface PlatformVersion {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Who developed this platform version */
-  companies: number[] | Partial<PlatformVersionCompany>[];
+  companies?: number[] | PlatformVersionCompany[];
 
   /** The network capabilities */
-  connectivity: string;
+  connectivity?: string;
 
   /** The integrated control processing unit */
-  cpu: string;
+  cpu?: string;
 
   /** The graphics chipset */
-  graphics: string;
+  graphics?: string;
 
   /** Who manufactured this version of the platform */
-  main_manufacturer: number | Partial<PlatformVersionCompany>;
+  main_manufacturer?: number | PlatformVersionCompany;
 
   /** The type of media this version accepted */
-  media: string;
+  media?: string;
 
   /** How much memory there is */
-  memory: string;
+  memory?: string;
 
   /** The name of the platform version */
-  name: string;
+  name?: string;
 
   /** The operating system installed on the platform version */
-  os: string;
+  os?: string;
 
   /** The output video rate */
-  output: string;
+  output?: string;
 
   /** The logo of this platform version */
-  platform_logo: number | Partial<PlatformLogo>;
+  platform_logo?: number | PlatformLogo;
 
   /** When this platform was released */
-  platform_version_release_dates: number[] | Partial<PlatformVersionReleaseDate>[];
+  platform_version_release_dates?: number[] | PlatformVersionReleaseDate[];
 
   /** The maximum resolution */
-  resolutions: string;
+  resolutions?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The sound chipset */
-  sound: string;
+  sound?: string;
 
   /** How much storage there is */
-  storage: string;
+  storage?: string;
 
   /** A short summary */
-  summary: string;
+  summary?: string;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * A platform developer
  *
- * @endpoint https://api.igdb.com/v4/platform_version_companies
+ * https://api.igdb.com/v4/platform_version_companies
  * @see https://api-docs.igdb.com/#platform-version-company
  */
 export interface PlatformVersionCompany {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Any notable comments about the developer */
-  comment: string;
+  comment?: string;
 
   /** The company responsible for developing this platform version */
-  company: number | Partial<Company>;
+  company?: number | Company;
 
-  developer: boolean;
+  developer?: boolean;
 
-  manufacturer: boolean;
+  manufacturer?: boolean;
 }
 
 /**
  * A handy endpoint that extends platform release dates. Used to dig deeper into release dates, platforms and versions.
  *
- * @endpoint https://api.igdb.com/v4/platform_version_release_dates
+ * https://api.igdb.com/v4/platform_version_release_dates
  * @see https://api-docs.igdb.com/#platform-version-release-date
  */
 export interface PlatformVersionReleaseDate {
+  id: number;
+
   /** The format of the release date */
-  category: PlatformVersionReleaseDateCategory;
+  category?: PlatformVersionReleaseDateCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** The release date */
-  date: number;
+  date?: number;
 
   /** A human readable version of the release date */
-  human: string;
+  human?: string;
 
   /** The month as an integer starting at 1 (January) */
-  m: number;
+  m?: number;
 
   /** The platform this release date is for */
-  platform_version: number | Partial<PlatformVersion>;
+  platform_version?: number | PlatformVersion;
 
   /** The region of the release */
-  region: PlatformVersionReleaseDateRegion;
+  region?: PlatformVersionReleaseDateRegion;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The year in full (2018) */
-  y: number;
+  y?: number;
 }
 
 /** @see https://api-docs.igdb.com/#platform-version-release-date-enums */
@@ -1322,20 +1384,22 @@ export enum PlatformVersionReleaseDateRegion {
 /**
  * The main website for the platform
  *
- * @endpoint https://api.igdb.com/v4/platform_websites
+ * https://api.igdb.com/v4/platform_websites
  * @see https://api-docs.igdb.com/#platform-website
  */
 export interface PlatformWebsite {
+  id: number;
+
   /** The service this website links to */
-  category: PlatformWebsiteCategory;
+  category?: PlatformWebsiteCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
-  trusted: boolean;
+  trusted?: boolean;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /** @see https://api-docs.igdb.com/#platform-website-enums */
@@ -1364,66 +1428,70 @@ export enum PlatformWebsiteCategory {
 /**
  * Player perspectives describe the view/perspective of the player in a video game.
  *
- * @endpoint https://api.igdb.com/v4/player_perspectives
+ * https://api.igdb.com/v4/player_perspectives
  * @see https://api-docs.igdb.com/#player-perspective
  */
 export interface PlayerPerspective {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions.
  *
- * @endpoint https://api.igdb.com/v4/release_dates
+ * https://api.igdb.com/v4/release_dates
  * @see https://api-docs.igdb.com/#release-date
  */
 export interface ReleaseDate {
+  id: number;
+
   /** The format category of the release date */
-  category: ReleaseDateCategory;
+  category?: ReleaseDateCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
   /** The date of the release */
-  date: number;
+  date?: number;
 
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** A human readable representation of the date */
-  human: string;
+  human?: string;
 
   /** The month as an integer starting at 1 (January) */
-  m: number;
+  m?: number;
 
   /** The platform of the release */
-  platform: number | Partial<Platform>;
+  platform?: number | Platform;
 
   /** The region of the release */
-  region: ReleaseDateRegion;
+  region?: ReleaseDateRegion;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The year in full (2018) */
-  y: number;
+  y?: number;
 }
 
 /** @see https://api-docs.igdb.com/#release-date-enums */
@@ -1455,110 +1523,118 @@ export enum ReleaseDateRegion {
 /**
  * Screenshots of games
  *
- * @endpoint https://api.igdb.com/v4/screenshots
+ * https://api.igdb.com/v4/screenshots
  * @see https://api-docs.igdb.com/#screenshot
  */
 export interface Screenshot {
-  alpha_channel: boolean;
+  id: number;
 
-  animated: boolean;
+  alpha_channel?: boolean;
+
+  animated?: boolean;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The game this video is associated with */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
   /** The height of the image in pixels */
-  height: number;
+  height?: number;
 
   /** The ID of the image used to construct an IGDB image link */
-  image_id: string;
+  image_id?: string;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 
   /** The width of the image in pixels */
-  width: number;
+  width?: number;
 }
 
 /**
- * @endpoint https://api.igdb.com/v4/search
+ * https://api.igdb.com/v4/search
  * @see https://api-docs.igdb.com/#search
  */
 export interface Search {
-  alternative_name: string;
+  id: number;
 
-  character: number | Partial<Character>;
+  alternative_name?: string;
+
+  character?: number | Character;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
-  collection: number | Partial<Collection>;
+  collection?: number | Collection;
 
-  company: number | Partial<Company>;
+  company?: number | Company;
 
-  description: string;
+  description?: string;
 
-  game: number | Partial<Game>;
+  game?: number | Game;
 
-  name: string;
+  name?: string;
 
-  platform: number | Partial<Platform>;
+  platform?: number | Platform;
 
   /** The date this item was initially published by the third party */
-  published_at: number;
+  published_at?: number;
 
-  test_dummy: unknown;
+  test_dummy?: unknown;
 
-  theme: number | Partial<Theme>;
+  theme?: number | Theme;
 }
 
 /**
  * Video game themes
  *
- * @endpoint https://api.igdb.com/v4/themes
+ * https://api.igdb.com/v4/themes
  * @see https://api-docs.igdb.com/#theme
  */
 export interface Theme {
+  id: number;
+
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** Date this was initially added to the IGDB database */
-  created_at: number;
+  created_at?: number;
 
-  name: string;
+  name?: string;
 
   /** A url-safe, unique, lower-case version of the name */
-  slug: string;
+  slug?: string;
 
   /** The last date this entry was updated in the IGDB database */
-  updated_at: number;
+  updated_at?: number;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /**
  * A website url, usually associated with a game
  *
- * @endpoint https://api.igdb.com/v4/websites
+ * https://api.igdb.com/v4/websites
  * @see https://api-docs.igdb.com/#website
  */
 export interface Website {
+  id: number;
+
   /** The service this website links to */
-  category: WebsiteCategory;
+  category?: WebsiteCategory;
 
   /** Hash of the object */
-  checksum: string;
+  checksum?: string;
 
   /** The game this website is associated with */
-  game: number | Partial<Game>;
+  game?: number | Game;
 
-  trusted: boolean;
+  trusted?: boolean;
 
   /** The website address (URL) of the item */
-  url: string;
+  url?: string;
 }
 
 /** @see https://api-docs.igdb.com/#website-enums */
