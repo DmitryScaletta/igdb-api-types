@@ -2,7 +2,43 @@
 
 TypeScript type definitions for IGDB API endpoint responses.
 
-All types are generated automatically by parsing the [IGDB API docs](https://api-docs.igdb.com/) page.
+All types are generated automatically by parsing the [IGDB API docs](https://api-docs.igdb.com/#endpoints) page.
+
+## Installation
+
+```bash
+npm i igdb-api-types
+```
+
+```bash
+yarn add igdb-api-types
+```
+
+## Usage
+
+```ts
+import axios from "axios";
+import { Game, GameCategory } from "igdb-api-types";
+
+const main = async () => {
+  const body = `fields *; where category=${GameCategory.main_game};`;
+  const headers = {
+    "Client-ID": process.env.CLIENT_ID,
+    Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    Accept: "application/json",
+  };
+
+  const response = await axios.post<Game[]>(
+    "https://api.igdb.com/v4/games",
+    body,
+    { headers }
+  );
+
+  console.log(response.data);
+};
+
+main();
+```
 
 ## Scripts
 
