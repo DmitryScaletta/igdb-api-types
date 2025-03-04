@@ -1,24 +1,28 @@
+import type { Endpoint } from "./parseDocs";
+
 const TYPES = {
   String: "string",
   Integer: "number",
   Double: "number",
   uuid: "string",
+  datetime: "number",
+  bigdecimal: "number",
   "Unix Time Stamp": "number",
   "Array of Strings": "string[]",
   "Array of Integers": "number[]",
   "Array of Tag Numbers": "number[]",
 };
 
-const getEnumName = (endpointName, enumName) => {
+const getEnumName = (endpointName: string, enumName: string) => {
   const name = enumName
     .split("_")
     .map((word) => word[0].toUpperCase() + word.slice(1))
     .join("");
 
-  return `${endpointName.replaceAll(" ", "")}${name}`;
+  return `${endpointName.replaceAll(" ", "")}${name}Enum`;
 };
 
-const generateTypes = async (api) => {
+const generateTypes = (api: Endpoint[]) => {
   let result = "";
 
   for (const endpoint of api) {
@@ -38,6 +42,8 @@ const generateTypes = async (api) => {
 
     result += `export interface ${title.replaceAll(" ", "")} {\n`;
     result += "  id: number;\n\n";
+
+    const deprecatedEnums: string[] = [];
 
     for (const [name, type, description] of responseFields) {
       let finalType = TYPES[type] || type.replaceAll(" ", "");
@@ -72,7 +78,12 @@ const generateTypes = async (api) => {
       }
 
       if (description) {
-        result += `  /** ${description} */\n`;
+        let finalDescription = description;
+        if (description.startsWith("DEPRECATED!")) {
+          if (finalType.endsWith("Enum")) deprecatedEnums.push(finalType);
+          finalDescription = description.replace("DEPRECATED!", "@deprecated");
+        }
+        result += `  /** ${finalDescription} */\n`;
       }
 
       result += `  ${name}?: ${finalType};\n\n`;
@@ -83,11 +94,21 @@ const generateTypes = async (api) => {
     result += "}\n\n";
 
     for (const { name, values } of enums) {
-      result += `/** @see https://api-docs.igdb.com/#${id}-enums */\n`;
-      result += `export enum ${getEnumName(title, name)} {\n`;
+      const enumName = getEnumName(title, name);
+
+      if (deprecatedEnums.includes(enumName)) {
+        result += `/**\n`;
+        result += ` * @deprecated\n`;
+        result += ` * @see https://api-docs.igdb.com/#${id}-enums\n`;
+        result += ` */\n`;
+      } else {
+        result += `/** @see https://api-docs.igdb.com/#${id}-enums */\n`;
+      }
+
+      result += `export enum ${enumName} {\n`;
 
       for (const [name, value] of values) {
-        result += `  ${name} = ${value},\n`;
+        result += `  ${name.replaceAll(" ", "_")} = ${value},\n`;
       }
 
       result += "}\n\n";
