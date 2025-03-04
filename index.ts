@@ -7,16 +7,25 @@
 export interface AgeRating {
   id: number;
 
-  /** The organization that has issued a specific rating */
-  category?: AgeRatingCategory;
+  /** @deprecated Use organization instead */
+  category?: AgeRatingCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
 
   content_descriptions?: number[] | AgeRatingContentDescription[];
 
-  /** The title of an age rating */
-  rating?: AgeRatingRating;
+  /** The organization that has issued a specific rating */
+  organization?: number | AgeRatingOrganization;
+
+  /** @deprecated Use rating_category instead */
+  rating?: AgeRatingRatingEnum;
+
+  /** The category of a rating */
+  rating_category?: number | AgeRatingCategory;
+
+  /** The rating content descriptions */
+  rating_content_descriptions?: number[] | AgeRatingContentDescriptionV2[];
 
   /** The url for  the image of a age rating */
   rating_cover_url?: string;
@@ -25,8 +34,11 @@ export interface AgeRating {
   synopsis?: string;
 }
 
-/** @see https://api-docs.igdb.com/#age-rating-enums */
-export enum AgeRatingCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#age-rating-enums
+ */
+export enum AgeRatingCategoryEnum {
   ESRB = 1,
   PEGI = 2,
   CERO = 3,
@@ -36,8 +48,11 @@ export enum AgeRatingCategory {
   ACB = 7,
 }
 
-/** @see https://api-docs.igdb.com/#age-rating-enums */
-export enum AgeRatingRating {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#age-rating-enums
+ */
+export enum AgeRatingRatingEnum {
   Three = 1,
   Seven = 2,
   Twelve = 3,
@@ -58,28 +73,54 @@ export enum AgeRatingRating {
   USK_0 = 18,
   USK_6 = 19,
   USK_12 = 20,
-  USK_18 = 21,
-  GRAC_ALL = 22,
-  GRAC_Twelve = 23,
-  GRAC_Fifteen = 24,
-  GRAC_Eighteen = 25,
-  GRAC_TESTING = 26,
-  CLASS_IND_L = 27,
-  CLASS_IND_Ten = 28,
-  CLASS_IND_Twelve = 29,
-  CLASS_IND_Fourteen = 30,
-  CLASS_IND_Sixteen = 31,
-  CLASS_IND_Eighteen = 32,
-  ACB_G = 33,
-  ACB_PG = 34,
-  ACB_M = 35,
-  ACB_MA15 = 36,
-  ACB_R18 = 37,
-  ACB_RC = 38,
+  USK_16 = 21,
+  USK_18 = 22,
+  GRAC_ALL = 23,
+  GRAC_Twelve = 24,
+  GRAC_Fifteen = 25,
+  GRAC_Eighteen = 26,
+  GRAC_TESTING = 27,
+  CLASS_IND_L = 28,
+  CLASS_IND_Ten = 29,
+  CLASS_IND_Twelve = 30,
+  CLASS_IND_Fourteen = 31,
+  CLASS_IND_Sixteen = 32,
+  CLASS_IND_Eighteen = 33,
+  ACB_G = 34,
+  ACB_PG = 35,
+  ACB_M = 36,
+  ACB_MA15 = 37,
+  ACB_R18 = 38,
+  ACB_RC = 39,
 }
 
 /**
- * The organisation behind a specific rating
+ * The rating category from the organization
+ *
+ * https://api.igdb.com/v4/age_rating_categories
+ * @see https://api-docs.igdb.com/#age-rating-category
+ */
+export interface AgeRatingCategory {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The rating organization */
+  organization?: number | AgeRatingOrganization;
+
+  /** The rating name */
+  rating?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * DEPRECATED! Use age_rating_content_descriptions_v2 instead
  *
  * https://api.igdb.com/v4/age_rating_content_descriptions
  * @see https://api-docs.igdb.com/#age-rating-content-description
@@ -87,7 +128,8 @@ export enum AgeRatingRating {
 export interface AgeRatingContentDescription {
   id: number;
 
-  category?: AgeRatingContentDescriptionCategory;
+  /** @deprecated */
+  category?: AgeRatingContentDescriptionCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
@@ -95,10 +137,142 @@ export interface AgeRatingContentDescription {
   description?: string;
 }
 
-/** @see https://api-docs.igdb.com/#age-rating-content-description-enums */
-export enum AgeRatingContentDescriptionCategory {
-  PEGI = 1,
-  ESRB = 2,
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#age-rating-content-description-enums
+ */
+export enum AgeRatingContentDescriptionCategoryEnum {
+  ESRB_alcohol_reference = 1,
+  ESRB_animated_blood = 2,
+  ESRB_blood = 3,
+  ESRB_blood_and_gore = 4,
+  ESRB_cartoon_violence = 5,
+  ESRB_comic_mischief = 6,
+  ESRB_crude_humor = 7,
+  ESRB_drug_reference = 8,
+  ESRB_fantasy_violence = 9,
+  ESRB_intense_violence = 10,
+  ESRB_language = 11,
+  ESRB_lyrics = 12,
+  ESRB_mature_humor = 13,
+  ESRB_nudity = 14,
+  ESRB_partial_nudity = 15,
+  ESRB_real_gambling = 16,
+  ESRB_sexual_content = 17,
+  ESRB_sexual_themes = 18,
+  ESRB_sexual_violence = 19,
+  ESRB_simulated_gambling = 20,
+  ESRB_strong_language = 21,
+  ESRB_strong_lyrics = 22,
+  ESRB_strong_sexual_content = 23,
+  ESRB_suggestive_themes = 24,
+  ESRB_tobacco_reference = 25,
+  ESRB_use_of_alcohol = 26,
+  ESRB_use_of_drugs = 27,
+  ESRB_use_of_tobacco = 28,
+  ESRB_violence = 29,
+  ESRB_violent_references = 30,
+  ESRB_animated_violence = 31,
+  ESRB_mild_language = 32,
+  ESRB_mild_violence = 33,
+  ESRB_use_of_drugs_and_alcohol = 34,
+  ESRB_drug_and_alcohol_reference = 35,
+  ESRB_mild_suggestive_themes = 36,
+  ESRB_mild_cartoon_violence = 37,
+  ESRB_mild_blood = 38,
+  ESRB_realistic_blood_and_gore = 39,
+  ESRB_realistic_violence = 40,
+  ESRB_alcohol_and_tobacco_reference = 41,
+  ESRB_mature_sexual_themes = 42,
+  ESRB_mild_animated_violence = 43,
+  ESRB_mild_sexual_themes = 44,
+  ESRB_use_of_alcohol_and_tobacco = 45,
+  ESRB_animated_blood_and_gore = 46,
+  ESRB_mild_fantasy_violence = 47,
+  ESRB_mild_lyrics = 48,
+  ESRB_realistic_blood = 49,
+  PEGI_violence = 50,
+  PEGI_sex = 51,
+  PEGI_drugs = 52,
+  PEGI_fear = 53,
+  PEGI_discrimination = 54,
+  PEGI_bad_language = 55,
+  PEGI_gambling = 56,
+  PEGI_online_gameplay = 57,
+  PEGI_in_game_purchases = 58,
+  CERO_love = 59,
+  CERO_sexual_content = 60,
+  CERO_violence = 61,
+  CERO_horror = 62,
+  CERO_drinking_smoking = 63,
+  CERO_gambling = 64,
+  CERO_crime = 65,
+  CERO_controlled_substances = 66,
+  CERO_languages_and_others = 67,
+  GRAC_sexuality = 68,
+  GRAC_violence = 69,
+  GRAC_fear_horror_threatening = 70,
+  GRAC_language = 71,
+  GRAC_alcohol_tobacco_drug = 72,
+  GRAC_crime_anti_social = 73,
+  GRAC_gambling = 74,
+  CLASS_IND_violencia = 75,
+  CLASS_IND_violencia_extrema = 76,
+  CLASS_IND_conteudo_sexual = 77,
+  CLASS_IND_nudez = 78,
+  CLASS_IND_sexo = 79,
+  CLASS_IND_sexo_explicito = 80,
+  CLASS_IND_drogas = 81,
+  CLASS_IND_drogas_licitas = 82,
+  CLASS_IND_drogas_ilicitas = 83,
+  CLASS_IND_linguagem_impropria = 84,
+  CLASS_IND_atos_criminosos = 85,
+}
+
+/**
+ * Age Rating Content Descriptors
+ *
+ * https://api.igdb.com/v4/age_rating_content_descriptions_v2
+ * @see https://api-docs.igdb.com/#age-rating-content-description-v2
+ */
+export interface AgeRatingContentDescriptionV2 {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  description?: string;
+
+  /** The rating organization */
+  organization?: number | AgeRatingOrganization;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Age Rating according to various rating organisations
+ *
+ * https://api.igdb.com/v4/age_rating_organizations
+ * @see https://api-docs.igdb.com/#age-rating-organization
+ */
+export interface AgeRatingOrganization {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The title of an age rating organization */
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
 }
 
 /**
@@ -167,6 +341,10 @@ export interface Character {
   /** Alternative names for a character */
   akas?: string[];
 
+  character_gender?: number | CharacterGender;
+
+  character_species?: number | CharacterSpecie;
+
   /** Hash of the object */
   checksum?: string;
 
@@ -181,7 +359,8 @@ export interface Character {
 
   games?: number[] | Game[];
 
-  gender?: CharacterGender;
+  /** @deprecated Use character_gender instead */
+  gender?: CharacterGenderEnum;
 
   /** An image depicting a character */
   mug_shot?: number | CharacterMugShot;
@@ -191,7 +370,8 @@ export interface Character {
   /** A url-safe, unique, lower-case version of the name */
   slug?: string;
 
-  species?: CharacterSpecies;
+  /** @deprecated Use character_species instead */
+  species?: CharacterSpeciesEnum;
 
   /** The last date this entry was updated in the IGDB database */
   updated_at?: number;
@@ -200,20 +380,47 @@ export interface Character {
   url?: string;
 }
 
-/** @see https://api-docs.igdb.com/#character-enums */
-export enum CharacterGender {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#character-enums
+ */
+export enum CharacterGenderEnum {
   Male = 0,
   Female = 1,
   Other = 2,
 }
 
-/** @see https://api-docs.igdb.com/#character-enums */
-export enum CharacterSpecies {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#character-enums
+ */
+export enum CharacterSpeciesEnum {
   Human = 1,
   Alien = 2,
   Animal = 3,
   Android = 4,
   Unknown = 5,
+}
+
+/**
+ * Character Genders
+ *
+ * https://api.igdb.com/v4/character_genders
+ * @see https://api-docs.igdb.com/#character-gender
+ */
+export interface CharacterGender {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
 }
 
 /**
@@ -246,6 +453,27 @@ export interface CharacterMugShot {
 }
 
 /**
+ * Character Species
+ *
+ * https://api.igdb.com/v4/character_species
+ * @see https://api-docs.igdb.com/#character-specie
+ */
+export interface CharacterSpecie {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
  * Collection, AKA Series
  *
  * https://api.igdb.com/v4/collections
@@ -253,6 +481,10 @@ export interface CharacterMugShot {
  */
 export interface Collection {
   id: number;
+
+  as_child_relations?: number[] | CollectionRelation[];
+
+  as_parent_relations?: number[] | CollectionRelation[];
 
   /** Hash of the object */
   checksum?: string;
@@ -269,11 +501,154 @@ export interface Collection {
   /** A url-safe, unique, lower-case version of the name */
   slug?: string;
 
+  /** The type of collection */
+  type?: number | CollectionType;
+
   /** The last date this entry was updated in the IGDB database */
   updated_at?: number;
 
   /** The website address (URL) of the item */
   url?: string;
+}
+
+/**
+ * The Collection Memberships.
+ *
+ * https://api.igdb.com/v4/collection_memberships
+ * @see https://api-docs.igdb.com/#collection-membership
+ */
+export interface CollectionMembership {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** The collection that is associated with this membership */
+  collection?: number | Collection;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The game that is associated with this membership */
+  game?: number | Game;
+
+  /** The Collection Membership Type */
+  type?: number | CollectionMembershipType;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Enums for collection membership types.
+ *
+ * https://api.igdb.com/v4/collection_membership_types
+ * @see https://api-docs.igdb.com/#collection-membership-type
+ */
+export interface CollectionMembershipType {
+  id: number;
+
+  /** The allowed collection type */
+  allowed_collection_type?: number | CollectionType;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** Description of the membership type. */
+  description?: string;
+
+  /** The membership type name */
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Describes Relationship between Collections.
+ *
+ * https://api.igdb.com/v4/collection_relations
+ * @see https://api-docs.igdb.com/#collection-relation
+ */
+export interface CollectionRelation {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** The child collection of this collection. */
+  child_collection?: number | Collection;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The parent collection of this collection. */
+  parent_collection?: number | Collection;
+
+  /** The collection relationship type */
+  type?: number | CollectionRelationType;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Collection Relation Types
+ *
+ * https://api.igdb.com/v4/collection_relation_types
+ * @see https://api-docs.igdb.com/#collection-relation-type
+ */
+export interface CollectionRelationType {
+  id: number;
+
+  /** The allowed child collection type */
+  allowed_child_type?: number | CollectionType;
+
+  /** The allowed child collection type */
+  allowed_parent_type?: number | CollectionType;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The relationship type description */
+  description?: string;
+
+  /** The relationship type name */
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Enums for collection types.
+ *
+ * https://api.igdb.com/v4/collection_types
+ * @see https://api-docs.igdb.com/#collection-type
+ */
+export interface CollectionType {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** Description of the collection type. */
+  description?: string;
+
+  /** The name of the collection type */
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
 }
 
 /**
@@ -288,7 +663,11 @@ export interface Company {
   /** The data when a company got a new ID */
   change_date?: number;
 
-  change_date_category?: CompanyChangeDateCategory;
+  /** @deprecated Use change_date_format instead */
+  change_date_category?: CompanyChangeDateCategoryEnum;
+
+  /** The format of the change date */
+  change_date_format?: number | DateFormat;
 
   /** The new ID for a company that has gone through a merger or restructuring */
   changed_company_id?: number | Company;
@@ -325,7 +704,14 @@ export interface Company {
   /** The date a company was founded */
   start_date?: number;
 
-  start_date_category?: CompanyStartDateCategory;
+  /** @deprecated Use start_date_format instead */
+  start_date_category?: CompanyStartDateCategoryEnum;
+
+  /** The format of the start date */
+  start_date_format?: number | DateFormat;
+
+  /** The status of the company */
+  status?: number | CompanyStatus;
 
   /** The last date this entry was updated in the IGDB database */
   updated_at?: number;
@@ -337,8 +723,11 @@ export interface Company {
   websites?: number[] | CompanyWebsite[];
 }
 
-/** @see https://api-docs.igdb.com/#company-enums */
-export enum CompanyChangeDateCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#company-enums
+ */
+export enum CompanyChangeDateCategoryEnum {
   YYYYMMMMDD = 0,
   YYYYMMMM = 1,
   YYYY = 2,
@@ -349,8 +738,11 @@ export enum CompanyChangeDateCategory {
   TBD = 7,
 }
 
-/** @see https://api-docs.igdb.com/#company-enums */
-export enum CompanyStartDateCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#company-enums
+ */
+export enum CompanyStartDateCategoryEnum {
   YYYYMMMMDD = 0,
   YYYYMMMM = 1,
   YYYY = 2,
@@ -391,6 +783,27 @@ export interface CompanyLogo {
 }
 
 /**
+ * Company Status
+ *
+ * https://api.igdb.com/v4/company_statuses
+ * @see https://api-docs.igdb.com/#company-status
+ */
+export interface CompanyStatus {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
  * Company Website
  *
  * https://api.igdb.com/v4/company_websites
@@ -399,20 +812,26 @@ export interface CompanyLogo {
 export interface CompanyWebsite {
   id: number;
 
-  /** The service this website links to */
-  category?: CompanyWebsiteCategory;
+  /** @deprecated Use type instead */
+  category?: CompanyWebsiteCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
 
   trusted?: boolean;
 
+  /** The website type associated with the website */
+  type?: number | WebsiteType;
+
   /** The website address (URL) of the item */
   url?: string;
 }
 
-/** @see https://api-docs.igdb.com/#company-website-enums */
-export enum CompanyWebsiteCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#company-website-enums
+ */
+export enum CompanyWebsiteCategoryEnum {
   official = 1,
   wikia = 2,
   wikipedia = 3,
@@ -430,6 +849,7 @@ export enum CompanyWebsiteCategory {
   epicgames = 16,
   gog = 17,
   discord = 18,
+  bluesky = 19,
 }
 
 /**
@@ -448,8 +868,11 @@ export interface Cover {
   /** Hash of the object */
   checksum?: string;
 
-  /** The game this cover is associated with */
+  /** The game this cover is associated with. If it is empty then this cover belongs to a game_localization, which can be found under game_localization field */
   game?: number | Game;
+
+  /** The game localization this cover might be associated with */
+  game_localization?: number | GameLocalization;
 
   /** The height of the image in pixels */
   height?: number;
@@ -465,6 +888,145 @@ export interface Cover {
 }
 
 /**
+ * The Date Format
+ *
+ * https://api.igdb.com/v4/date_formats
+ * @see https://api-docs.igdb.com/#date-format
+ */
+export interface DateFormat {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  format?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Gaming event like GamesCom, Tokyo Game Show, PAX or GSL
+ *
+ * https://api.igdb.com/v4/events
+ * @see https://api-docs.igdb.com/#event
+ */
+export interface Event {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The description of the event */
+  description?: string;
+
+  /** End time of the event in UTC */
+  end_time?: number;
+
+  /** Logo of the event. */
+  event_logo?: number | EventLogo;
+
+  /** Urls associated with the event */
+  event_networks?: number[] | EventNetwork[];
+
+  /** Games featured in the event */
+  games?: number[] | Game[];
+
+  /** URL to the livestream of the event. */
+  live_stream_url?: string;
+
+  /** The name of the event */
+  name?: string;
+
+  /** A url-safe, unique, lower-case version of the name */
+  slug?: string;
+
+  /** Start time of the event in UTC */
+  start_time?: number;
+
+  /** Timezone the event is in. */
+  time_zone?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+
+  /** Trailers featured in the event */
+  videos?: number[] | GameVideo[];
+}
+
+/**
+ * Logo for the event
+ *
+ * https://api.igdb.com/v4/event_logos
+ * @see https://api-docs.igdb.com/#event-logo
+ */
+export interface EventLogo {
+  id: number;
+
+  alpha_channel?: boolean;
+
+  animated?: boolean;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The event associated with this logo. */
+  event?: number | Event;
+
+  /** The height of the image in pixels */
+  height?: number;
+
+  /** The ID of the image used to construct an IGDB image link */
+  image_id?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+
+  /** The website address (URL) of the item */
+  url?: string;
+
+  /** The width of the image in pixels */
+  width?: number;
+}
+
+/**
+ * Urls related to the event like twitter, facebook and youtube
+ *
+ * https://api.igdb.com/v4/event_networks
+ * @see https://api-docs.igdb.com/#event-network
+ */
+export interface EventNetwork {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The event associated with this URL. */
+  event?: number | Event;
+
+  /** Network type */
+  network_type?: number | NetworkType;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+
+  /** The website address (URL) of the item */
+  url?: string;
+}
+
+/**
  * Game IDs on other services
  *
  * https://api.igdb.com/v4/external_games
@@ -473,8 +1035,8 @@ export interface Cover {
 export interface ExternalGame {
   id: number;
 
-  /** The id of the other service */
-  category?: ExternalGameCategory;
+  /** @deprecated Use external_game_source instead */
+  category?: ExternalGameCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
@@ -485,11 +1047,17 @@ export interface ExternalGame {
   /** Date this was initially added to the IGDB database */
   created_at?: number;
 
+  /** The source of the external game. */
+  external_game_source?: number | ExternalGameSource;
+
   /** The IGDB ID of the game */
   game?: number | Game;
 
-  /** The media of the external game. */
-  media?: ExternalGameMedia;
+  /** The release format of the external game. */
+  game_release_format?: number | GameReleaseFormat;
+
+  /** @deprecated Use game_release_format instead */
+  media?: ExternalGameMediaEnum;
 
   /** The name of the game according to the other service */
   name?: string;
@@ -510,8 +1078,11 @@ export interface ExternalGame {
   year?: number;
 }
 
-/** @see https://api-docs.igdb.com/#external-game-enums */
-export enum ExternalGameCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#external-game-enums
+ */
+export enum ExternalGameCategoryEnum {
   steam = 1,
   gog = 5,
   youtube = 10,
@@ -524,12 +1095,44 @@ export enum ExternalGameCategory {
   amazon_adg = 23,
   epic_game_store = 26,
   oculus = 28,
+  utomik = 29,
+  itch_io = 30,
+  xbox_marketplace = 31,
+  kartridge = 32,
+  playstation_store_us = 36,
+  focus_entertainment = 37,
+  xbox_game_pass_ultimate_cloud = 54,
+  gamejolt = 55,
 }
 
-/** @see https://api-docs.igdb.com/#external-game-enums */
-export enum ExternalGameMedia {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#external-game-enums
+ */
+export enum ExternalGameMediaEnum {
   digital = 1,
   physical = 2,
+}
+
+/**
+ * Sources for the external games
+ *
+ * https://api.igdb.com/v4/external_game_sources
+ * @see https://api-docs.igdb.com/#external-game-source
+ */
+export interface ExternalGameSource {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
 }
 
 /**
@@ -590,14 +1193,17 @@ export interface Game {
   /** The bundles this game is a part of */
   bundles?: number[] | Game[];
 
-  /** The category of this game */
-  category?: GameCategory;
+  /** @deprecated Use game_type instead */
+  category?: GameCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
 
-  /** The series the game belongs to */
+  /** @deprecated Use collections instead */
   collection?: number | Collection;
+
+  /** The collections that this game is in. */
+  collections?: number[] | Collection[];
 
   /** The cover of this game */
   cover?: number | Cover;
@@ -620,7 +1226,7 @@ export interface Game {
   /** The first release date for this game */
   first_release_date?: number;
 
-  /** Number of people following a game */
+  /** @deprecated - To be removed */
   follows?: number;
 
   /** Forks of this game */
@@ -635,8 +1241,17 @@ export interface Game {
   /** The game engine used in this game */
   game_engines?: number[] | GameEngine[];
 
+  /** Supported game localizations for this game. A region can have at most one game localization for a given game */
+  game_localizations?: number[] | GameLocalization[];
+
   /** Modes of gameplay */
   game_modes?: number[] | GameMode[];
+
+  /** The status of the games release */
+  game_status?: number | GameStatus;
+
+  /** The type of game */
+  game_type?: number | GameType;
 
   /** Genres of the game */
   genres?: number[] | Genre[];
@@ -649,6 +1264,9 @@ export interface Game {
 
   /** Associated keywords */
   keywords?: number[] | Keyword[];
+
+  /** Supported Languages for this game */
+  language_supports?: number[] | LanguageSupport[];
 
   /** Multiplayer modes for this game */
   multiplayer_modes?: number[] | MultiplayerMode[];
@@ -694,8 +1312,8 @@ export interface Game {
   /** Standalone expansions of this game */
   standalone_expansions?: number[] | Game[];
 
-  /** The status of the games release */
-  status?: GameStatus;
+  /** @deprecated Use game_status instead */
+  status?: GameStatusEnum;
 
   /** A short description of a games story */
   storyline?: string;
@@ -734,8 +1352,11 @@ export interface Game {
   websites?: number[] | Website[];
 }
 
-/** @see https://api-docs.igdb.com/#game-enums */
-export enum GameCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#game-enums
+ */
+export enum GameCategoryEnum {
   main_game = 0,
   dlc_addon = 1,
   expansion = 2,
@@ -749,10 +1370,15 @@ export enum GameCategory {
   expanded_game = 10,
   port = 11,
   fork = 12,
+  pack = 13,
+  update = 14,
 }
 
-/** @see https://api-docs.igdb.com/#game-enums */
-export enum GameStatus {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#game-enums
+ */
+export enum GameStatusEnum {
   released = 0,
   alpha = 2,
   beta = 3,
@@ -833,6 +1459,36 @@ export interface GameEngineLogo {
 }
 
 /**
+ * Game localization for a game
+ *
+ * https://api.igdb.com/v4/game_localizations
+ * @see https://api-docs.igdb.com/#game-localization
+ */
+export interface GameLocalization {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** The cover of this game localization */
+  cover?: number | Cover;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The Game the localization belongs to */
+  game?: number | Game;
+
+  name?: string;
+
+  /** The Region of the localization */
+  region?: number | Region;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
  * Single player, Multiplayer etc
  *
  * https://api.igdb.com/v4/game_modes
@@ -858,6 +1514,103 @@ export interface GameMode {
 
   /** The website address (URL) of the item */
   url?: string;
+}
+
+/**
+ * The format of the game release
+ *
+ * https://api.igdb.com/v4/game_release_formats
+ * @see https://api-docs.igdb.com/#game-release-format
+ */
+export interface GameReleaseFormat {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  format?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * The release status of the game
+ *
+ * https://api.igdb.com/v4/game_statuses
+ * @see https://api-docs.igdb.com/#game-status
+ */
+export interface GameStatus {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  status?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Average time to beat times for a game.
+ *
+ * https://api.igdb.com/v4/game_time_to_beats
+ * @see https://api-docs.igdb.com/#game-time-to-beat
+ */
+export interface GameTimeToBeat {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Average time (in seconds) to finish the game to 100% completion. */
+  completely?: number;
+
+  /** Total number of time to beat submissions for this game */
+  count?: number;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The ID of the game associated with the time to beat data */
+  game_id?: number;
+
+  /** Average time (in seconds) to finish the game to its credits without spending notable time on extras such as side quests. */
+  hastily?: number;
+
+  /** Average time (in seconds) to finish the game while mixing in some extras such as side quests without being overly thorough. */
+  normally?: number;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * The type that this game is
+ *
+ * https://api.igdb.com/v4/game_types
+ * @see https://api-docs.igdb.com/#game-type
+ */
+export interface GameType {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  type?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
 }
 
 /**
@@ -901,7 +1654,7 @@ export interface GameVersionFeature {
   id: number;
 
   /** The category of the feature description */
-  category?: GameVersionFeatureCategory;
+  category?: GameVersionFeatureCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
@@ -920,7 +1673,7 @@ export interface GameVersionFeature {
 }
 
 /** @see https://api-docs.igdb.com/#game-version-feature-enums */
-export enum GameVersionFeatureCategory {
+export enum GameVersionFeatureCategoryEnum {
   boolean = 0,
   description = 1,
 }
@@ -944,14 +1697,14 @@ export interface GameVersionFeatureValue {
   game_feature?: number | GameVersionFeature;
 
   /** The boole value of this feature */
-  included_feature?: GameVersionFeatureValueIncludedFeature;
+  included_feature?: GameVersionFeatureValueIncludedFeatureEnum;
 
   /** The text value of this feature */
   note?: string;
 }
 
 /** @see https://api-docs.igdb.com/#game-version-feature-value-enums */
-export enum GameVersionFeatureValueIncludedFeature {
+export enum GameVersionFeatureValueIncludedFeatureEnum {
   NOT_INCLUDED = 0,
   INCLUDED = 1,
   PRE_ORDER_ONLY = 2,
@@ -975,7 +1728,7 @@ export interface GameVideo {
   /** The name of the video */
   name?: string;
 
-  /** The external ID of the video (usually youtube) */
+  /** The external ID of the video (YouTube Links) */
   video_id?: string;
 }
 
@@ -1063,6 +1816,80 @@ export interface Keyword {
 }
 
 /**
+ * Languages that are used in the Language Support endpoint.
+ *
+ * https://api.igdb.com/v4/languages
+ * @see https://api-docs.igdb.com/#language
+ */
+export interface Language {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The combination of Language code and Country code */
+  locale?: string;
+
+  /** The English name of the Language */
+  name?: string;
+
+  /** The Native Name of the Language */
+  native_name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Games can be played with different languages for voice acting, subtitles, or the interface language.
+ *
+ * https://api.igdb.com/v4/language_supports
+ * @see https://api-docs.igdb.com/#language-support
+ */
+export interface LanguageSupport {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  game?: number | Game;
+
+  language?: number | Language;
+
+  language_support_type?: number | LanguageSupportType;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * Language Support Types contains the identifiers for the support types that Language Support uses.
+ *
+ * https://api.igdb.com/v4/language_support_types
+ * @see https://api-docs.igdb.com/#language-support-type
+ */
+export interface LanguageSupportType {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
  * Data about the supported multiplayer types
  *
  * https://api.igdb.com/v4/multiplayer_modes
@@ -1115,6 +1942,30 @@ export interface MultiplayerMode {
 }
 
 /**
+ * Social networks related to the event like twitter, facebook and youtube
+ *
+ * https://api.igdb.com/v4/network_types
+ * @see https://api-docs.igdb.com/#network-type
+ */
+export interface NetworkType {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** Urls associated with the event type */
+  event_networks?: number[] | EventNetwork[];
+
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
  * The hardware used to run the game or game delivery network
  *
  * https://api.igdb.com/v4/platforms
@@ -1129,8 +1980,8 @@ export interface Platform {
   /** An alternative name for the platform */
   alternative_name?: string;
 
-  /** A physical or virtual category of the platform */
-  category?: PlatformCategory;
+  /** @deprecated Use platform_type instead */
+  category?: PlatformCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
@@ -1149,6 +2000,9 @@ export interface Platform {
 
   /** The logo of the first Version of this platform */
   platform_logo?: number | PlatformLogo;
+
+  /** The type of the platform */
+  platform_type?: number | PlatformType;
 
   /** A url-safe, unique, lower-case version of the name */
   slug?: string;
@@ -1169,8 +2023,11 @@ export interface Platform {
   websites?: number[] | PlatformWebsite[];
 }
 
-/** @see https://api-docs.igdb.com/#platform-enums */
-export enum PlatformCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#platform-enums
+ */
+export enum PlatformCategoryEnum {
   console = 1,
   arcade = 2,
   platform = 3,
@@ -1225,6 +2082,27 @@ export interface PlatformLogo {
 
   /** The width of the image in pixels */
   width?: number;
+}
+
+/**
+ * Types of platforms
+ *
+ * https://api.igdb.com/v4/platform_types
+ * @see https://api-docs.igdb.com/#platform-type
+ */
+export interface PlatformType {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
 }
 
 /**
@@ -1316,72 +2194,6 @@ export interface PlatformVersionCompany {
 }
 
 /**
- * A handy endpoint that extends platform release dates. Used to dig deeper into release dates, platforms and versions.
- *
- * https://api.igdb.com/v4/platform_version_release_dates
- * @see https://api-docs.igdb.com/#platform-version-release-date
- */
-export interface PlatformVersionReleaseDate {
-  id: number;
-
-  /** The format of the release date */
-  category?: PlatformVersionReleaseDateCategory;
-
-  /** Hash of the object */
-  checksum?: string;
-
-  /** Date this was initially added to the IGDB database */
-  created_at?: number;
-
-  /** The release date */
-  date?: number;
-
-  /** A human readable version of the release date */
-  human?: string;
-
-  /** The month as an integer starting at 1 (January) */
-  m?: number;
-
-  /** The platform this release date is for */
-  platform_version?: number | PlatformVersion;
-
-  /** The region of the release */
-  region?: PlatformVersionReleaseDateRegion;
-
-  /** The last date this entry was updated in the IGDB database */
-  updated_at?: number;
-
-  /** The year in full (2018) */
-  y?: number;
-}
-
-/** @see https://api-docs.igdb.com/#platform-version-release-date-enums */
-export enum PlatformVersionReleaseDateCategory {
-  YYYYMMMMDD = 0,
-  YYYYMMMM = 1,
-  YYYY = 2,
-  YYYYQ1 = 3,
-  YYYYQ2 = 4,
-  YYYYQ3 = 5,
-  YYYYQ4 = 6,
-  TBD = 7,
-}
-
-/** @see https://api-docs.igdb.com/#platform-version-release-date-enums */
-export enum PlatformVersionReleaseDateRegion {
-  europe = 1,
-  north_america = 2,
-  australia = 3,
-  new_zealand = 4,
-  japan = 5,
-  china = 6,
-  asia = 7,
-  worldwide = 8,
-  korea = 9,
-  brazil = 10,
-}
-
-/**
  * The main website for the platform
  *
  * https://api.igdb.com/v4/platform_websites
@@ -1391,7 +2203,7 @@ export interface PlatformWebsite {
   id: number;
 
   /** The service this website links to */
-  category?: PlatformWebsiteCategory;
+  category?: PlatformWebsiteCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
@@ -1403,7 +2215,7 @@ export interface PlatformWebsite {
 }
 
 /** @see https://api-docs.igdb.com/#platform-website-enums */
-export enum PlatformWebsiteCategory {
+export enum PlatformWebsiteCategoryEnum {
   official = 1,
   wikia = 2,
   wikipedia = 3,
@@ -1423,6 +2235,84 @@ export enum PlatformWebsiteCategory {
   linkedin = 18,
   pinterest = 19,
   soundcloud = 20,
+}
+
+/**
+ * A handy endpoint that extends platform release dates. Used to dig deeper into release dates, platforms and versions.
+ *
+ * https://api.igdb.com/v4/platform_version_release_dates
+ * @see https://api-docs.igdb.com/#platform-version-release-date
+ */
+export interface PlatformVersionReleaseDate {
+  id: number;
+
+  /** @deprecated Use date_format instead */
+  category?: PlatformVersionReleaseDateCategoryEnum;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The release date */
+  date?: number;
+
+  /** The format of the change date */
+  date_format?: number | DateFormat;
+
+  /** A human readable version of the release date */
+  human?: string;
+
+  /** The month as an integer starting at 1 (January) */
+  m?: number;
+
+  /** The platform this release date is for */
+  platform_version?: number | PlatformVersion;
+
+  /** @deprecated Use release_region instead */
+  region?: PlatformVersionReleaseDateRegionEnum;
+
+  /** The region of the release */
+  release_region?: number | ReleaseDateRegion;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+
+  /** The year in full (2018) */
+  y?: number;
+}
+
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#platform-version-release-date-enums
+ */
+export enum PlatformVersionReleaseDateCategoryEnum {
+  YYYYMMMMDD = 0,
+  YYYYMMMM = 1,
+  YYYY = 2,
+  YYYYQ1 = 3,
+  YYYYQ2 = 4,
+  YYYYQ3 = 5,
+  YYYYQ4 = 6,
+  TBD = 7,
+}
+
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#platform-version-release-date-enums
+ */
+export enum PlatformVersionReleaseDateRegionEnum {
+  europe = 1,
+  north_america = 2,
+  australia = 3,
+  new_zealand = 4,
+  japan = 5,
+  china = 6,
+  asia = 7,
+  worldwide = 8,
+  korea = 9,
+  brazil = 10,
 }
 
 /**
@@ -1453,6 +2343,108 @@ export interface PlayerPerspective {
 }
 
 /**
+ * Popularity Primitives, this endpoint lists available primitives with their source and popularity type.
+ *
+ * https://api.igdb.com/v4/popularity_primitives
+ * @see https://api-docs.igdb.com/#popularity-primitive
+ */
+export interface PopularityPrimitive {
+  id: number;
+
+  calculated_at?: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  external_popularity_source?: number | ExternalGameSource;
+
+  game_id?: number;
+
+  /** @deprecated Use external_popularity_source instead */
+  popularity_source?: PopularityPrimitivePopularitySourceEnum;
+
+  popularity_type?: number | PopularityType;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+
+  value?: number;
+}
+
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#popularity-primitive-enums
+ */
+export enum PopularityPrimitivePopularitySourceEnum {
+  igdb = 121,
+}
+
+/**
+ * This describes what type of popularity primitive or popularity indicator the popularity value is.
+ *
+ * https://api.igdb.com/v4/popularity_types
+ * @see https://api-docs.igdb.com/#popularity-type
+ */
+export interface PopularityType {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  external_popularity_source?: number | ExternalGameSource;
+
+  name?: string;
+
+  /** @deprecated Use external_popularity_source instead */
+  popularity_source?: PopularityTypePopularitySourceEnum;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#popularity-type-enums
+ */
+export enum PopularityTypePopularitySourceEnum {
+  steam = 1,
+  igdb = 121,
+}
+
+/**
+ * Region for game localization
+ *
+ * https://api.igdb.com/v4/regions
+ * @see https://api-docs.igdb.com/#region
+ */
+export interface Region {
+  id: number;
+
+  /** This can be either ’locale’ or ‘continent’ */
+  category?: string;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** This is the identifier of each region */
+  identifier?: string;
+
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
  * A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions.
  *
  * https://api.igdb.com/v4/release_dates
@@ -1461,8 +2453,8 @@ export interface PlayerPerspective {
 export interface ReleaseDate {
   id: number;
 
-  /** The format category of the release date */
-  category?: ReleaseDateCategory;
+  /** @deprecated Use date_format instead */
+  category?: ReleaseDateCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
@@ -1472,6 +2464,9 @@ export interface ReleaseDate {
 
   /** The date of the release */
   date?: number;
+
+  /** The format of the change date */
+  date_format?: number | DateFormat;
 
   game?: number | Game;
 
@@ -1484,8 +2479,14 @@ export interface ReleaseDate {
   /** The platform of the release */
   platform?: number | Platform;
 
+  /** @deprecated Use release_region instead */
+  region?: ReleaseDateRegionEnum;
+
   /** The region of the release */
-  region?: ReleaseDateRegion;
+  release_region?: number | ReleaseDateRegion;
+
+  /** The status of the release. */
+  status?: number | ReleaseDateStatus;
 
   /** The last date this entry was updated in the IGDB database */
   updated_at?: number;
@@ -1494,8 +2495,11 @@ export interface ReleaseDate {
   y?: number;
 }
 
-/** @see https://api-docs.igdb.com/#release-date-enums */
-export enum ReleaseDateCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#release-date-enums
+ */
+export enum ReleaseDateCategoryEnum {
   YYYYMMMMDD = 0,
   YYYYMMMM = 1,
   YYYY = 2,
@@ -1506,8 +2510,11 @@ export enum ReleaseDateCategory {
   TBD = 7,
 }
 
-/** @see https://api-docs.igdb.com/#release-date-enums */
-export enum ReleaseDateRegion {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#release-date-enums
+ */
+export enum ReleaseDateRegionEnum {
   europe = 1,
   north_america = 2,
   australia = 3,
@@ -1518,6 +2525,52 @@ export enum ReleaseDateRegion {
   worldwide = 8,
   korea = 9,
   brazil = 10,
+}
+
+/**
+ * Regions for release dates
+ *
+ * https://api.igdb.com/v4/release_date_regions
+ * @see https://api-docs.igdb.com/#release-date-region
+ */
+export interface ReleaseDateRegion {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  region?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
+}
+
+/**
+ * An endpoint to provide definition of all of the current release date statuses.
+ *
+ * https://api.igdb.com/v4/release_date_statuses
+ * @see https://api-docs.igdb.com/#release-date-status
+ */
+export interface ReleaseDateStatus {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The description of the release date status. */
+  description?: string;
+
+  /** The name of the release date status. */
+  name?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
 }
 
 /**
@@ -1622,8 +2675,8 @@ export interface Theme {
 export interface Website {
   id: number;
 
-  /** The service this website links to */
-  category?: WebsiteCategory;
+  /** @deprecated Use type instead */
+  category?: WebsiteCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
@@ -1633,12 +2686,18 @@ export interface Website {
 
   trusted?: boolean;
 
+  /** The website type associated with the website */
+  type?: number | WebsiteType;
+
   /** The website address (URL) of the item */
   url?: string;
 }
 
-/** @see https://api-docs.igdb.com/#website-enums */
-export enum WebsiteCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#website-enums
+ */
+export enum WebsiteCategoryEnum {
   official = 1,
   wikia = 2,
   wikipedia = 3,
@@ -1656,4 +2715,27 @@ export enum WebsiteCategory {
   epicgames = 16,
   gog = 17,
   discord = 18,
+  bluesky = 19,
+}
+
+/**
+ * A website type, usually the name of the website
+ *
+ * https://api.igdb.com/v4/website_types
+ * @see https://api-docs.igdb.com/#website-type
+ */
+export interface WebsiteType {
+  id: number;
+
+  /** Hash of the object */
+  checksum?: string;
+
+  /** Date this was initially added to the IGDB database */
+  created_at?: number;
+
+  /** The website type */
+  type?: string;
+
+  /** The last date this entry was updated in the IGDB database */
+  updated_at?: number;
 }

@@ -8,7 +8,7 @@
       [
         "category",
         "Category Enum",
-        "The organization that has issued a specific rating"
+        "DEPRECATED! Use organization instead"
       ],
       [
         "checksum",
@@ -21,9 +21,24 @@
         ""
       ],
       [
+        "organization",
+        "Reference ID for  Age Rating Organization",
+        "The organization that has issued a specific rating"
+      ],
+      [
         "rating",
         "Rating Enum",
-        "The title of an age rating"
+        "DEPRECATED! Use rating_category instead"
+      ],
+      [
+        "rating_category",
+        "Reference ID for  Age Rating Category",
+        "The category of a rating"
+      ],
+      [
+        "rating_content_descriptions",
+        "Array of  Age Rating Content Description V2 IDs",
+        "The rating content descriptions"
       ],
       [
         "rating_cover_url",
@@ -154,91 +169,129 @@
             "20"
           ],
           [
-            "USK_18",
+            "USK_16",
             "21"
           ],
           [
-            "GRAC_ALL",
+            "USK_18",
             "22"
           ],
           [
-            "GRAC_Twelve",
+            "GRAC_ALL",
             "23"
           ],
           [
-            "GRAC_Fifteen",
+            "GRAC_Twelve",
             "24"
           ],
           [
-            "GRAC_Eighteen",
+            "GRAC_Fifteen",
             "25"
           ],
           [
-            "GRAC_TESTING",
+            "GRAC_Eighteen",
             "26"
           ],
           [
-            "CLASS_IND_L",
+            "GRAC_TESTING",
             "27"
           ],
           [
-            "CLASS_IND_Ten",
+            "CLASS_IND_L",
             "28"
           ],
           [
-            "CLASS_IND_Twelve",
+            "CLASS_IND_Ten",
             "29"
           ],
           [
-            "CLASS_IND_Fourteen",
+            "CLASS_IND_Twelve",
             "30"
           ],
           [
-            "CLASS_IND_Sixteen",
+            "CLASS_IND_Fourteen",
             "31"
           ],
           [
-            "CLASS_IND_Eighteen",
+            "CLASS_IND_Sixteen",
             "32"
           ],
           [
-            "ACB_G",
+            "CLASS_IND_Eighteen",
             "33"
           ],
           [
-            "ACB_PG",
+            "ACB_G",
             "34"
           ],
           [
-            "ACB_M",
+            "ACB_PG",
             "35"
           ],
           [
-            "ACB_MA15",
+            "ACB_M",
             "36"
           ],
           [
-            "ACB_R18",
+            "ACB_MA15",
             "37"
           ],
           [
-            "ACB_RC",
+            "ACB_R18",
             "38"
+          ],
+          [
+            "ACB_RC",
+            "39"
           ]
         ]
       }
     ]
   },
   {
+    "id": "age-rating-category",
+    "title": "Age Rating Category",
+    "description": "The rating category from the organization",
+    "requestPath": "https://api.igdb.com/v4/age_rating_categories",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "organization",
+        "Reference ID for  Age Rating Organization",
+        "The rating organization"
+      ],
+      [
+        "rating",
+        "String",
+        "The rating name"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
     "id": "age-rating-content-description",
     "title": "Age Rating Content Description",
-    "description": "The organisation behind a specific rating",
+    "description": "DEPRECATED! Use age_rating_content_descriptions_v2 instead",
     "requestPath": "https://api.igdb.com/v4/age_rating_content_descriptions",
     "responseFields": [
       [
         "category",
         "Category Enum",
-        ""
+        "DEPRECATED!"
       ],
       [
         "checksum",
@@ -256,16 +309,411 @@
         "name": "category",
         "values": [
           [
-            "PEGI",
+            "ESRB_alcohol_reference",
             "1"
           ],
           [
-            "ESRB",
+            "ESRB_animated_blood",
             "2"
+          ],
+          [
+            "ESRB_blood",
+            "3"
+          ],
+          [
+            "ESRB_blood_and gore",
+            "4"
+          ],
+          [
+            "ESRB_cartoon_violence",
+            "5"
+          ],
+          [
+            "ESRB_comic_mischief",
+            "6"
+          ],
+          [
+            "ESRB_crude_humor",
+            "7"
+          ],
+          [
+            "ESRB_drug_reference",
+            "8"
+          ],
+          [
+            "ESRB_fantasy_violence",
+            "9"
+          ],
+          [
+            "ESRB_intense_violence",
+            "10"
+          ],
+          [
+            "ESRB_language",
+            "11"
+          ],
+          [
+            "ESRB_lyrics",
+            "12"
+          ],
+          [
+            "ESRB_mature_humor",
+            "13"
+          ],
+          [
+            "ESRB_nudity",
+            "14"
+          ],
+          [
+            "ESRB_partial_nudity",
+            "15"
+          ],
+          [
+            "ESRB_real_gambling",
+            "16"
+          ],
+          [
+            "ESRB_sexual_content",
+            "17"
+          ],
+          [
+            "ESRB_sexual_themes",
+            "18"
+          ],
+          [
+            "ESRB_sexual_violence",
+            "19"
+          ],
+          [
+            "ESRB_simulated_gambling",
+            "20"
+          ],
+          [
+            "ESRB_strong_language",
+            "21"
+          ],
+          [
+            "ESRB_strong_lyrics",
+            "22"
+          ],
+          [
+            "ESRB_strong_sexual content",
+            "23"
+          ],
+          [
+            "ESRB_suggestive_themes",
+            "24"
+          ],
+          [
+            "ESRB_tobacco_reference",
+            "25"
+          ],
+          [
+            "ESRB_use_of alcohol",
+            "26"
+          ],
+          [
+            "ESRB_use_of drugs",
+            "27"
+          ],
+          [
+            "ESRB_use_of tobacco",
+            "28"
+          ],
+          [
+            "ESRB_violence",
+            "29"
+          ],
+          [
+            "ESRB_violent_references",
+            "30"
+          ],
+          [
+            "ESRB_animated_violence",
+            "31"
+          ],
+          [
+            "ESRB_mild_language",
+            "32"
+          ],
+          [
+            "ESRB_mild_violence",
+            "33"
+          ],
+          [
+            "ESRB_use_of drugs and alcohol",
+            "34"
+          ],
+          [
+            "ESRB_drug_and alcohol reference",
+            "35"
+          ],
+          [
+            "ESRB_mild_suggestive themes",
+            "36"
+          ],
+          [
+            "ESRB_mild_cartoon violence",
+            "37"
+          ],
+          [
+            "ESRB_mild_blood",
+            "38"
+          ],
+          [
+            "ESRB_realistic_blood and gore",
+            "39"
+          ],
+          [
+            "ESRB_realistic_violence",
+            "40"
+          ],
+          [
+            "ESRB_alcohol_and tobacco reference",
+            "41"
+          ],
+          [
+            "ESRB_mature_sexual themes",
+            "42"
+          ],
+          [
+            "ESRB_mild_animated violence",
+            "43"
+          ],
+          [
+            "ESRB_mild_sexual themes",
+            "44"
+          ],
+          [
+            "ESRB_use_of alcohol and tobacco",
+            "45"
+          ],
+          [
+            "ESRB_animated_blood and gore",
+            "46"
+          ],
+          [
+            "ESRB_mild_fantasy violence",
+            "47"
+          ],
+          [
+            "ESRB_mild_lyrics",
+            "48"
+          ],
+          [
+            "ESRB_realistic_blood",
+            "49"
+          ],
+          [
+            "PEGI_violence",
+            "50"
+          ],
+          [
+            "PEGI_sex",
+            "51"
+          ],
+          [
+            "PEGI_drugs",
+            "52"
+          ],
+          [
+            "PEGI_fear",
+            "53"
+          ],
+          [
+            "PEGI_discrimination",
+            "54"
+          ],
+          [
+            "PEGI_bad_language",
+            "55"
+          ],
+          [
+            "PEGI_gambling",
+            "56"
+          ],
+          [
+            "PEGI_online_gameplay",
+            "57"
+          ],
+          [
+            "PEGI_in_game_purchases",
+            "58"
+          ],
+          [
+            "CERO_love",
+            "59"
+          ],
+          [
+            "CERO_sexual_content",
+            "60"
+          ],
+          [
+            "CERO_violence",
+            "61"
+          ],
+          [
+            "CERO_horror",
+            "62"
+          ],
+          [
+            "CERO_drinking_smoking",
+            "63"
+          ],
+          [
+            "CERO_gambling",
+            "64"
+          ],
+          [
+            "CERO_crime",
+            "65"
+          ],
+          [
+            "CERO_controlled_substances",
+            "66"
+          ],
+          [
+            "CERO_languages_and others",
+            "67"
+          ],
+          [
+            "GRAC_sexuality",
+            "68"
+          ],
+          [
+            "GRAC_violence",
+            "69"
+          ],
+          [
+            "GRAC_fear_horror_threatening",
+            "70"
+          ],
+          [
+            "GRAC_language",
+            "71"
+          ],
+          [
+            "GRAC_alcohol_tobacco_drug",
+            "72"
+          ],
+          [
+            "GRAC_crime_anti_social",
+            "73"
+          ],
+          [
+            "GRAC_gambling",
+            "74"
+          ],
+          [
+            "CLASS_IND_violencia",
+            "75"
+          ],
+          [
+            "CLASS_IND_violencia_extrema",
+            "76"
+          ],
+          [
+            "CLASS_IND_conteudo_sexual",
+            "77"
+          ],
+          [
+            "CLASS_IND_nudez",
+            "78"
+          ],
+          [
+            "CLASS_IND_sexo",
+            "79"
+          ],
+          [
+            "CLASS_IND_sexo_explicito",
+            "80"
+          ],
+          [
+            "CLASS_IND_drogas",
+            "81"
+          ],
+          [
+            "CLASS_IND_drogas_licitas",
+            "82"
+          ],
+          [
+            "CLASS_IND_drogas_ilicitas",
+            "83"
+          ],
+          [
+            "CLASS_IND_linguagem_impropria",
+            "84"
+          ],
+          [
+            "CLASS_IND_atos_criminosos",
+            "85"
           ]
         ]
       }
     ]
+  },
+  {
+    "id": "age-rating-content-description-v2",
+    "title": "Age Rating Content Description V2",
+    "description": "Age Rating Content Descriptors",
+    "requestPath": "https://api.igdb.com/v4/age_rating_content_descriptions_v2",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        ""
+      ],
+      [
+        "organization",
+        "Reference ID for  Age Rating Organization",
+        "The rating organization"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "age-rating-organization",
+    "title": "Age Rating Organization",
+    "description": "Age Rating according to various rating organisations",
+    "requestPath": "https://api.igdb.com/v4/age_rating_organizations",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        "The title of an age rating organization"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
   },
   {
     "id": "alternative-name",
@@ -357,6 +805,16 @@
         "Alternative names for a character"
       ],
       [
+        "character_gender",
+        "Reference ID for  Character Gender",
+        ""
+      ],
+      [
+        "character_species",
+        "Reference ID for  Character Specie",
+        ""
+      ],
+      [
         "checksum",
         "uuid",
         "Hash of the object"
@@ -368,7 +826,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -384,7 +842,7 @@
       [
         "gender",
         "Gender Enum",
-        ""
+        "DEPRECATED! Use character_gender instead"
       ],
       [
         "mug_shot",
@@ -404,11 +862,11 @@
       [
         "species",
         "Species Enum",
-        ""
+        "DEPRECATED! Use character_species instead"
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -463,6 +921,35 @@
     ]
   },
   {
+    "id": "character-gender",
+    "title": "Character Gender",
+    "description": "Character Genders",
+    "requestPath": "https://api.igdb.com/v4/character_genders",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
     "id": "character-mug-shot",
     "title": "Character Mug Shot",
     "description": "Images depicting game characters",
@@ -507,10 +994,10 @@
     "enums": []
   },
   {
-    "id": "collection",
-    "title": "Collection",
-    "description": "Collection, AKA Series",
-    "requestPath": "https://api.igdb.com/v4/collections",
+    "id": "character-specie",
+    "title": "Character Specie",
+    "description": "Character Species",
+    "requestPath": "https://api.igdb.com/v4/character_species",
     "responseFields": [
       [
         "checksum",
@@ -519,7 +1006,46 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "collection",
+    "title": "Collection",
+    "description": "Collection, AKA Series",
+    "requestPath": "https://api.igdb.com/v4/collections",
+    "responseFields": [
+      [
+        "as_child_relations",
+        "Array of  Collection Relation IDs",
+        ""
+      ],
+      [
+        "as_parent_relations",
+        "Array of  Collection Relation IDs",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -538,14 +1064,214 @@
         "A url-safe, unique, lower-case version of the name"
       ],
       [
+        "type",
+        "Reference ID for  Collection Type",
+        "The type of collection"
+      ],
+      [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
         "url",
         "String",
         "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "collection-membership",
+    "title": "Collection Membership",
+    "description": "The Collection Memberships.",
+    "requestPath": "https://api.igdb.com/v4/collection_memberships",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "collection",
+        "Reference ID for Collection",
+        "The collection that is associated with this membership"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        "The game that is associated with this membership"
+      ],
+      [
+        "type",
+        "Reference ID for  Collection Membership Type",
+        "The Collection Membership Type"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "collection-membership-type",
+    "title": "Collection Membership Type",
+    "description": "Enums for collection membership types.",
+    "requestPath": "https://api.igdb.com/v4/collection_membership_types",
+    "responseFields": [
+      [
+        "allowed_collection_type",
+        "Reference ID for  Collection Type",
+        "The allowed collection type"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        "Description of the membership type."
+      ],
+      [
+        "name",
+        "String",
+        "The membership type name"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "collection-relation",
+    "title": "Collection Relation",
+    "description": "Describes Relationship between Collections.",
+    "requestPath": "https://api.igdb.com/v4/collection_relations",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "child_collection",
+        "Reference ID for  Collection",
+        "The child collection of this collection."
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "parent_collection",
+        "Reference ID for  Collection",
+        "The parent collection of this collection."
+      ],
+      [
+        "type",
+        "Reference ID for  Collection Relation Type",
+        "The collection relationship type"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "collection-relation-type",
+    "title": "Collection Relation Type",
+    "description": "Collection Relation Types",
+    "requestPath": "https://api.igdb.com/v4/collection_relation_types",
+    "responseFields": [
+      [
+        "allowed_child_type",
+        "Reference ID for  Collection Type",
+        "The allowed child collection type"
+      ],
+      [
+        "allowed_parent_type",
+        "Reference ID for  Collection Type",
+        "The allowed child collection type"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        "The relationship type description"
+      ],
+      [
+        "name",
+        "String",
+        "The relationship type name"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "collection-type",
+    "title": "Collection Type",
+    "description": "Enums for collection types.",
+    "requestPath": "https://api.igdb.com/v4/collection_types",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        "Description of the collection type."
+      ],
+      [
+        "name",
+        "String",
+        "The name of the collection type"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
       ]
     ],
     "enums": []
@@ -564,7 +1290,12 @@
       [
         "change_date_category",
         "Change Date Category Enum",
-        ""
+        "DEPRECATED! Use change_date_format instead"
+      ],
+      [
+        "change_date_format",
+        "Reference ID for  Date Format",
+        "The format of the change date"
       ],
       [
         "changed_company_id",
@@ -583,7 +1314,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -629,11 +1360,21 @@
       [
         "start_date_category",
         "Start Date Category Enum",
-        ""
+        "DEPRECATED! Use start_date_format instead"
+      ],
+      [
+        "start_date_format",
+        "Reference ID for  Date Format",
+        "The format of the start date"
+      ],
+      [
+        "status",
+        "Reference ID for  Company Status",
+        "The status of the company"
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -769,6 +1510,35 @@
     "enums": []
   },
   {
+    "id": "company-status",
+    "title": "Company Status",
+    "description": "Company Status",
+    "requestPath": "https://api.igdb.com/v4/company_statuses",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
     "id": "company-website",
     "title": "Company Website",
     "description": "Company Website",
@@ -777,7 +1547,7 @@
       [
         "category",
         "Category Enum",
-        "The service this website links to"
+        "DEPRECATED! Use type instead"
       ],
       [
         "checksum",
@@ -788,6 +1558,11 @@
         "trusted",
         "boolean",
         ""
+      ],
+      [
+        "type",
+        "Reference ID for  Website Type",
+        "The website type associated with the website"
       ],
       [
         "url",
@@ -866,6 +1641,10 @@
           [
             "discord",
             "18"
+          ],
+          [
+            "bluesky",
+            "19"
           ]
         ]
       }
@@ -895,7 +1674,12 @@
       [
         "game",
         "Reference ID for Game",
-        "The game this cover is associated with"
+        "The game this cover is associated with. If it is empty then this cover belongs to a game_localization, which can be found under game_localization field"
+      ],
+      [
+        "game_localization",
+        "Reference ID for Game Localization",
+        "The game localization this cover might be associated with"
       ],
       [
         "height",
@@ -921,6 +1705,212 @@
     "enums": []
   },
   {
+    "id": "date-format",
+    "title": "Date Format",
+    "description": "The Date Format",
+    "requestPath": "https://api.igdb.com/v4/date_formats",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "format",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "event",
+    "title": "Event",
+    "description": "Gaming event like GamesCom, Tokyo Game Show, PAX or GSL",
+    "requestPath": "https://api.igdb.com/v4/events",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        "The description of the event"
+      ],
+      [
+        "end_time",
+        "datetime",
+        "End time of the event in UTC"
+      ],
+      [
+        "event_logo",
+        "Reference ID for  Event Logo",
+        "Logo of the event."
+      ],
+      [
+        "event_networks",
+        "Array of  Event Network IDs",
+        "Urls associated with the event"
+      ],
+      [
+        "games",
+        "Array of  Game IDs",
+        "Games featured in the event"
+      ],
+      [
+        "live_stream_url",
+        "String",
+        "URL to the livestream of the event."
+      ],
+      [
+        "name",
+        "String",
+        "The name of the event"
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "start_time",
+        "datetime",
+        "Start time of the event in UTC"
+      ],
+      [
+        "time_zone",
+        "String",
+        "Timezone the event is in."
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "videos",
+        "Array of  Game Video IDs",
+        "Trailers featured in the event"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "event-logo",
+    "title": "Event Logo",
+    "description": "Logo for the event",
+    "requestPath": "https://api.igdb.com/v4/event_logos",
+    "responseFields": [
+      [
+        "alpha_channel",
+        "boolean",
+        ""
+      ],
+      [
+        "animated",
+        "boolean",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "event",
+        "Reference ID for Event",
+        "The event associated with this logo."
+      ],
+      [
+        "height",
+        "Integer",
+        "The height of the image in pixels"
+      ],
+      [
+        "image_id",
+        "String",
+        "The ID of the image used to construct an IGDB image link"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ],
+      [
+        "width",
+        "Integer",
+        "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "event-network",
+    "title": "Event Network",
+    "description": "Urls related to the event like twitter, facebook and youtube",
+    "requestPath": "https://api.igdb.com/v4/event_networks",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "event",
+        "Reference ID for Event",
+        "The event associated with this URL."
+      ],
+      [
+        "network_type",
+        "Reference ID for  Network Type",
+        "Network type"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
     "id": "external-game",
     "title": "External Game",
     "description": "Game IDs on other services",
@@ -929,7 +1919,7 @@
       [
         "category",
         "Category Enum",
-        "The id of the other service"
+        "DEPRECATED! Use external_game_source instead"
       ],
       [
         "checksum",
@@ -943,8 +1933,13 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
+      ],
+      [
+        "external_game_source",
+        "Reference ID for  External Game Source",
+        "The source of the external game."
       ],
       [
         "game",
@@ -952,9 +1947,14 @@
         "The IGDB ID of the game"
       ],
       [
+        "game_release_format",
+        "Reference ID for  Game Release Format",
+        "The release format of the external game."
+      ],
+      [
         "media",
         "Media Enum",
-        "The media of the external game."
+        "DEPRECATED! Use game_release_format instead"
       ],
       [
         "name",
@@ -973,7 +1973,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -1038,6 +2038,38 @@
           [
             "oculus",
             "28"
+          ],
+          [
+            "utomik",
+            "29"
+          ],
+          [
+            "itch_io",
+            "30"
+          ],
+          [
+            "xbox_marketplace",
+            "31"
+          ],
+          [
+            "kartridge",
+            "32"
+          ],
+          [
+            "playstation_store_us",
+            "36"
+          ],
+          [
+            "focus_entertainment",
+            "37"
+          ],
+          [
+            "xbox_game_pass_ultimate_cloud",
+            "54"
+          ],
+          [
+            "gamejolt",
+            "55"
           ]
         ]
       },
@@ -1057,6 +2089,35 @@
     ]
   },
   {
+    "id": "external-game-source",
+    "title": "External Game Source",
+    "description": "Sources for the external games",
+    "requestPath": "https://api.igdb.com/v4/external_game_sources",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
     "id": "franchise",
     "title": "Franchise",
     "description": "A list of video game franchises such as Star Wars.",
@@ -1069,7 +2130,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -1089,7 +2150,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -1139,7 +2200,7 @@
       [
         "category",
         "Category Enum",
-        "The category of this game"
+        "DEPRECATED! Use game_type instead"
       ],
       [
         "checksum",
@@ -1149,7 +2210,12 @@
       [
         "collection",
         "Reference ID for Collection",
-        "The series the game belongs to"
+        "DEPRECATED! Use collections instead"
+      ],
+      [
+        "collections",
+        "Array of  Collection IDs",
+        "The collections that this game is in."
       ],
       [
         "cover",
@@ -1158,7 +2224,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -1189,7 +2255,7 @@
       [
         "follows",
         "Integer",
-        "Number of people following a game"
+        "DEPRECATED! - To be removed"
       ],
       [
         "forks",
@@ -1212,9 +2278,24 @@
         "The game engine used in this game"
       ],
       [
+        "game_localizations",
+        "Array of Game Localization IDs",
+        "Supported game localizations for this game. A region can have at most one game localization for a given game"
+      ],
+      [
         "game_modes",
         "Array of Game Mode IDs",
         "Modes of gameplay"
+      ],
+      [
+        "game_status",
+        "Reference ID for  Game Status",
+        "The status of the games release"
+      ],
+      [
+        "game_type",
+        "Reference ID for  Game Type",
+        "The type of game"
       ],
       [
         "genres",
@@ -1235,6 +2316,11 @@
         "keywords",
         "Array of Keyword IDs",
         "Associated keywords"
+      ],
+      [
+        "language_supports",
+        "Array of Language Support IDs",
+        "Supported Languages for this game"
       ],
       [
         "multiplayer_modes",
@@ -1314,7 +2400,7 @@
       [
         "status",
         "Status Enum",
-        "The status of the games release"
+        "DEPRECATED! Use game_status instead"
       ],
       [
         "storyline",
@@ -1348,7 +2434,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -1432,6 +2518,14 @@
           [
             "fork",
             "12"
+          ],
+          [
+            "pack",
+            "13"
+          ],
+          [
+            "update",
+            "14"
           ]
         ]
       },
@@ -1492,7 +2586,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -1522,7 +2616,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -1578,6 +2672,50 @@
     "enums": []
   },
   {
+    "id": "game-localization",
+    "title": "Game Localization",
+    "description": "Game localization for a game",
+    "requestPath": "https://api.igdb.com/v4/game_localizations",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "cover",
+        "Reference ID for Cover",
+        "The cover of this game localization"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "game",
+        "Reference ID for  Game",
+        "The Game the localization belongs to"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "region",
+        "Reference ID for  Region",
+        "The Region of the localization"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
     "id": "game-mode",
     "title": "Game Mode",
     "description": "Single player, Multiplayer etc",
@@ -1590,7 +2728,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -1605,13 +2743,149 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
         "url",
         "String",
         "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game-release-format",
+    "title": "Game Release Format",
+    "description": "The format of the game release",
+    "requestPath": "https://api.igdb.com/v4/game_release_formats",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "format",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game-status",
+    "title": "Game Status",
+    "description": "The release status of the game",
+    "requestPath": "https://api.igdb.com/v4/game_statuses",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "status",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game-time-to-beat",
+    "title": "Game Time To Beat",
+    "description": "Average time to beat times for a game.",
+    "requestPath": "https://api.igdb.com/v4/game_time_to_beats",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "completely",
+        "Integer",
+        "Average time (in seconds) to finish the game to 100% completion."
+      ],
+      [
+        "count",
+        "Integer",
+        "Total number of time to beat submissions for this game"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "game_id",
+        "Integer",
+        "The ID of the game associated with the time to beat data"
+      ],
+      [
+        "hastily",
+        "Integer",
+        "Average time (in seconds) to finish the game to its credits without spending notable time on extras such as side quests."
+      ],
+      [
+        "normally",
+        "Integer",
+        "Average time (in seconds) to finish the game while mixing in some extras such as side quests without being overly thorough."
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "game-type",
+    "title": "Game Type",
+    "description": "The type that this game is",
+    "requestPath": "https://api.igdb.com/v4/game_types",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "type",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
       ]
     ],
     "enums": []
@@ -1629,7 +2903,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -1649,7 +2923,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -1789,7 +3063,7 @@
       [
         "video_id",
         "String",
-        "The external ID of the video (usually youtube)"
+        "The external ID of the video (YouTube Links)"
       ]
     ],
     "enums": []
@@ -1807,7 +3081,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -1822,7 +3096,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -1851,7 +3125,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -1881,7 +3155,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ]
     ],
@@ -1900,7 +3174,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -1915,13 +3189,120 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
         "url",
         "String",
         "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "language",
+    "title": "Language",
+    "description": "Languages that are used in the Language Support endpoint.",
+    "requestPath": "https://api.igdb.com/v4/languages",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "locale",
+        "String",
+        "The combination of Language code and Country code"
+      ],
+      [
+        "name",
+        "String",
+        "The English name of the Language"
+      ],
+      [
+        "native_name",
+        "String",
+        "The Native Name of the Language"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "language-support",
+    "title": "Language Support",
+    "description": "Games can be played with different languages for voice acting, subtitles, or the interface language.",
+    "requestPath": "https://api.igdb.com/v4/language_supports",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "game",
+        "Reference ID for  Game",
+        ""
+      ],
+      [
+        "language",
+        "Reference ID for  Language",
+        ""
+      ],
+      [
+        "language_support_type",
+        "Reference ID for  Language Support Type",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "language-support-type",
+    "title": "Language Support Type",
+    "description": "Language Support Types contains the identifiers for the support types that Language Support uses.",
+    "requestPath": "https://api.igdb.com/v4/language_support_types",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
       ]
     ],
     "enums": []
@@ -2006,6 +3387,40 @@
     "enums": []
   },
   {
+    "id": "network-type",
+    "title": "Network Type",
+    "description": "Social networks related to the event like twitter, facebook and youtube",
+    "requestPath": "https://api.igdb.com/v4/network_types",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "event_networks",
+        "Array of  Event Network IDs",
+        "Urls associated with the event type"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
     "id": "platform",
     "title": "Platform",
     "description": "The hardware used to run the game or game delivery network",
@@ -2024,7 +3439,7 @@
       [
         "category",
         "Category Enum",
-        "A physical or virtual category of the platform"
+        "DEPRECATED! Use platform_type instead"
       ],
       [
         "checksum",
@@ -2033,7 +3448,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -2057,6 +3472,11 @@
         "The logo of the first Version of this platform"
       ],
       [
+        "platform_type",
+        "Reference ID for  Platform Type",
+        "The type of the platform"
+      ],
+      [
         "slug",
         "String",
         "A url-safe, unique, lower-case version of the name"
@@ -2068,7 +3488,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -2183,6 +3603,35 @@
         "width",
         "Integer",
         "The width of the image in pixels"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "platform-type",
+    "title": "Platform Type",
+    "description": "Types of platforms",
+    "requestPath": "https://api.igdb.com/v4/platform_types",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
       ]
     ],
     "enums": []
@@ -2326,148 +3775,6 @@
     "enums": []
   },
   {
-    "id": "platform-version-release-date",
-    "title": "Platform Version Release Date",
-    "description": "A handy endpoint that extends platform release dates. Used to dig deeper into release dates, platforms and versions.",
-    "requestPath": "https://api.igdb.com/v4/platform_version_release_dates",
-    "responseFields": [
-      [
-        "category",
-        "Category Enum",
-        "The format of the release date"
-      ],
-      [
-        "checksum",
-        "uuid",
-        "Hash of the object"
-      ],
-      [
-        "created_at",
-        "Unix Time Stamp",
-        "Date this was initially added to the IGDB database"
-      ],
-      [
-        "date",
-        "Unix Time Stamp",
-        "The release date"
-      ],
-      [
-        "human",
-        "String",
-        "A human readable version of the release date"
-      ],
-      [
-        "m",
-        "Integer",
-        "The month as an integer starting at 1 (January)"
-      ],
-      [
-        "platform_version",
-        "Reference ID for Platform Version",
-        "The platform this release date is for"
-      ],
-      [
-        "region",
-        "Region Enum",
-        "The region of the release"
-      ],
-      [
-        "updated_at",
-        "Unix Time Stamp",
-        "The last date this entry was updated in the IGDB database"
-      ],
-      [
-        "y",
-        "Integer",
-        "The year in full (2018)"
-      ]
-    ],
-    "enums": [
-      {
-        "name": "category",
-        "values": [
-          [
-            "YYYYMMMMDD",
-            "0"
-          ],
-          [
-            "YYYYMMMM",
-            "1"
-          ],
-          [
-            "YYYY",
-            "2"
-          ],
-          [
-            "YYYYQ1",
-            "3"
-          ],
-          [
-            "YYYYQ2",
-            "4"
-          ],
-          [
-            "YYYYQ3",
-            "5"
-          ],
-          [
-            "YYYYQ4",
-            "6"
-          ],
-          [
-            "TBD",
-            "7"
-          ]
-        ]
-      },
-      {
-        "name": "region",
-        "values": [
-          [
-            "europe",
-            "1"
-          ],
-          [
-            "north_america",
-            "2"
-          ],
-          [
-            "australia",
-            "3"
-          ],
-          [
-            "new_zealand",
-            "4"
-          ],
-          [
-            "japan",
-            "5"
-          ],
-          [
-            "china",
-            "6"
-          ],
-          [
-            "asia",
-            "7"
-          ],
-          [
-            "worldwide",
-            "8"
-          ],
-          [
-            "korea",
-            "9"
-          ],
-          [
-            "brazil",
-            "10"
-          ]
-        ]
-      }
-    ]
-  },
-  {
     "id": "platform-website",
     "title": "Platform Website",
     "description": "The main website for the platform",
@@ -2579,54 +3886,15 @@
     ]
   },
   {
-    "id": "player-perspective",
-    "title": "Player Perspective",
-    "description": "Player perspectives describe the view/perspective of the player in a video game.",
-    "requestPath": "https://api.igdb.com/v4/player_perspectives",
-    "responseFields": [
-      [
-        "checksum",
-        "uuid",
-        "Hash of the object"
-      ],
-      [
-        "created_at",
-        "Unix Time Stamp",
-        "Date this was initially added to the IGDB database"
-      ],
-      [
-        "name",
-        "String",
-        ""
-      ],
-      [
-        "slug",
-        "String",
-        "A url-safe, unique, lower-case version of the name"
-      ],
-      [
-        "updated_at",
-        "Unix Time Stamp",
-        "The last date this entry was updated in the IGDB database"
-      ],
-      [
-        "url",
-        "String",
-        "The website address (URL) of the item"
-      ]
-    ],
-    "enums": []
-  },
-  {
-    "id": "release-date",
-    "title": "Release Date",
-    "description": "A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions.",
-    "requestPath": "https://api.igdb.com/v4/release_dates",
+    "id": "platform-version-release-date",
+    "title": "Platform Version Release Date",
+    "description": "A handy endpoint that extends platform release dates. Used to dig deeper into release dates, platforms and versions.",
+    "requestPath": "https://api.igdb.com/v4/platform_version_release_dates",
     "responseFields": [
       [
         "category",
         "Category Enum",
-        "The format category of the release date"
+        "DEPRECATED! Use date_format instead"
       ],
       [
         "checksum",
@@ -2635,23 +3903,23 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
         "date",
         "Unix Time Stamp",
-        "The date of the release"
+        "The release date"
       ],
       [
-        "game",
-        "Reference ID for Game",
-        ""
+        "date_format",
+        "Reference ID for  Date Format",
+        "The format of the change date"
       ],
       [
         "human",
         "String",
-        "A human readable representation of the date"
+        "A human readable version of the release date"
       ],
       [
         "m",
@@ -2659,18 +3927,23 @@
         "The month as an integer starting at 1 (January)"
       ],
       [
-        "platform",
-        "Reference ID for Platform",
-        "The platform of the release"
+        "platform_version",
+        "Reference ID for Platform Version",
+        "The platform this release date is for"
       ],
       [
         "region",
         "Region Enum",
+        "DEPRECATED! Use release_region instead"
+      ],
+      [
+        "release_region",
+        "Reference ID for  Release Date Region",
         "The region of the release"
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -2763,6 +4036,426 @@
         ]
       }
     ]
+  },
+  {
+    "id": "player-perspective",
+    "title": "Player Perspective",
+    "description": "Player perspectives describe the view/perspective of the player in a video game.",
+    "requestPath": "https://api.igdb.com/v4/player_perspectives",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "slug",
+        "String",
+        "A url-safe, unique, lower-case version of the name"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "url",
+        "String",
+        "The website address (URL) of the item"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "popularity-primitive",
+    "title": "Popularity Primitive",
+    "description": "Popularity Primitives, this endpoint lists available primitives with their source and popularity type.",
+    "requestPath": "https://api.igdb.com/v4/popularity_primitives",
+    "responseFields": [
+      [
+        "calculated_at",
+        "datetime",
+        ""
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "external_popularity_source",
+        "Reference ID for  External Game Source",
+        ""
+      ],
+      [
+        "game_id",
+        "Integer",
+        ""
+      ],
+      [
+        "popularity_source",
+        "Popularity Source Enum",
+        "DEPRECATED! Use external_popularity_source instead"
+      ],
+      [
+        "popularity_type",
+        "Reference ID for  Popularity Type",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "value",
+        "bigdecimal",
+        ""
+      ]
+    ],
+    "enums": [
+      {
+        "name": "popularity_source",
+        "values": [
+          [
+            "igdb",
+            "121"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "popularity-type",
+    "title": "Popularity Type",
+    "description": "This describes what type of popularity primitive or popularity indicator the popularity value is.",
+    "requestPath": "https://api.igdb.com/v4/popularity_types",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "external_popularity_source",
+        "Reference ID for  External Game Source",
+        ""
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "popularity_source",
+        "Popularity Source Enum",
+        "DEPRECATED! Use external_popularity_source instead"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "popularity_source",
+        "values": [
+          [
+            "steam",
+            "1"
+          ],
+          [
+            "igdb",
+            "121"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "region",
+    "title": "Region",
+    "description": "Region for game localization",
+    "requestPath": "https://api.igdb.com/v4/regions",
+    "responseFields": [
+      [
+        "category",
+        "String",
+        "This can be either ’locale’ or ‘continent’"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "identifier",
+        "String",
+        "This is the identifier of each region"
+      ],
+      [
+        "name",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "release-date",
+    "title": "Release Date",
+    "description": "A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions.",
+    "requestPath": "https://api.igdb.com/v4/release_dates",
+    "responseFields": [
+      [
+        "category",
+        "Category Enum",
+        "DEPRECATED! Use date_format instead"
+      ],
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "date",
+        "datetime",
+        "The date of the release"
+      ],
+      [
+        "date_format",
+        "Reference ID for  Date Format",
+        "The format of the change date"
+      ],
+      [
+        "game",
+        "Reference ID for Game",
+        ""
+      ],
+      [
+        "human",
+        "String",
+        "A human readable representation of the date"
+      ],
+      [
+        "m",
+        "Integer",
+        "The month as an integer starting at 1 (January)"
+      ],
+      [
+        "platform",
+        "Reference ID for Platform",
+        "The platform of the release"
+      ],
+      [
+        "region",
+        "Region Enum",
+        "DEPRECATED! Use release_region instead"
+      ],
+      [
+        "release_region",
+        "Reference ID for  Release Date Region",
+        "The region of the release"
+      ],
+      [
+        "status",
+        "Reference ID for  Release Date Status",
+        "The status of the release."
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ],
+      [
+        "y",
+        "Integer",
+        "The year in full (2018)"
+      ]
+    ],
+    "enums": [
+      {
+        "name": "category",
+        "values": [
+          [
+            "YYYYMMMMDD",
+            "0"
+          ],
+          [
+            "YYYYMMMM",
+            "1"
+          ],
+          [
+            "YYYY",
+            "2"
+          ],
+          [
+            "YYYYQ1",
+            "3"
+          ],
+          [
+            "YYYYQ2",
+            "4"
+          ],
+          [
+            "YYYYQ3",
+            "5"
+          ],
+          [
+            "YYYYQ4",
+            "6"
+          ],
+          [
+            "TBD",
+            "7"
+          ]
+        ]
+      },
+      {
+        "name": "region",
+        "values": [
+          [
+            "europe",
+            "1"
+          ],
+          [
+            "north_america",
+            "2"
+          ],
+          [
+            "australia",
+            "3"
+          ],
+          [
+            "new_zealand",
+            "4"
+          ],
+          [
+            "japan",
+            "5"
+          ],
+          [
+            "china",
+            "6"
+          ],
+          [
+            "asia",
+            "7"
+          ],
+          [
+            "worldwide",
+            "8"
+          ],
+          [
+            "korea",
+            "9"
+          ],
+          [
+            "brazil",
+            "10"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "release-date-region",
+    "title": "Release Date Region",
+    "description": "Regions for release dates",
+    "requestPath": "https://api.igdb.com/v4/release_date_regions",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "region",
+        "String",
+        ""
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
+  },
+  {
+    "id": "release-date-status",
+    "title": "Release Date Status",
+    "description": "An endpoint to provide definition of all of the current release date statuses.",
+    "requestPath": "https://api.igdb.com/v4/release_date_statuses",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "description",
+        "String",
+        "The description of the release date status."
+      ],
+      [
+        "name",
+        "String",
+        "The name of the release date status."
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
   },
   {
     "id": "screenshot",
@@ -2895,7 +4588,7 @@
       ],
       [
         "created_at",
-        "Unix Time Stamp",
+        "datetime",
         "Date this was initially added to the IGDB database"
       ],
       [
@@ -2910,7 +4603,7 @@
       ],
       [
         "updated_at",
-        "Unix Time Stamp",
+        "datetime",
         "The last date this entry was updated in the IGDB database"
       ],
       [
@@ -2930,7 +4623,7 @@
       [
         "category",
         "Category Enum",
-        "The service this website links to"
+        "DEPRECATED! Use type instead"
       ],
       [
         "checksum",
@@ -2946,6 +4639,11 @@
         "trusted",
         "boolean",
         ""
+      ],
+      [
+        "type",
+        "Reference ID for  Website Type",
+        "The website type associated with the website"
       ],
       [
         "url",
@@ -3024,9 +4722,42 @@
           [
             "discord",
             "18"
+          ],
+          [
+            "bluesky",
+            "19"
           ]
         ]
       }
     ]
+  },
+  {
+    "id": "website-type",
+    "title": "Website Type",
+    "description": "A website type, usually the name of the website",
+    "requestPath": "https://api.igdb.com/v4/website_types",
+    "responseFields": [
+      [
+        "checksum",
+        "uuid",
+        "Hash of the object"
+      ],
+      [
+        "created_at",
+        "datetime",
+        "Date this was initially added to the IGDB database"
+      ],
+      [
+        "type",
+        "String",
+        "The website type"
+      ],
+      [
+        "updated_at",
+        "datetime",
+        "The last date this entry was updated in the IGDB database"
+      ]
+    ],
+    "enums": []
   }
 ]
