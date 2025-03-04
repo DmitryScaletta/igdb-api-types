@@ -1,18 +1,25 @@
 {
   "name": "igdb-api-types",
   "description": "TypeScript type definitions for IGDB API endpoint responses",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "DmitryScaletta",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitryScaletta/igdb-api-types.git"
+  },
   "files": [
     "index.ts"
   ],
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.ts"
   },
   "devDependencies": {
-    "cheerio": "^1.0.0-rc.10"
-  }
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.13.9",
+    "jsdom": "^26.0.0"
+  },
+  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b"
 }
