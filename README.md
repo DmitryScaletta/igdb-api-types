@@ -8,36 +8,36 @@ All types are generated automatically by parsing the [IGDB API docs](https://api
 
 ```bash
 npm i igdb-api-types
-```
 
-```bash
+pnpm i igdb-api-types
+
 yarn add igdb-api-types
 ```
 
 ## Usage
 
 ```ts
-import axios from "axios";
-import { Game, GameCategory } from "igdb-api-types";
+import { type Game, GameCategoryEnum } from "igdb-api-types";
 
-const main = async () => {
-  const body = `fields *; where category=${GameCategory.main_game};`;
-  const headers = {
-    "Client-ID": process.env.CLIENT_ID,
-    Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
-    Accept: "application/json",
-  };
+const fetchGames = async () => {
+  const response = await fetch("https://api.igdb.com/v4/games", {
+    method: 'POST',
+    headers: {
+      "Client-ID": process.env.CLIENT_ID,
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      Accept: "application/json",
+    },
+    body: `fields *; where category=${GameCategoryEnum.main_game};`,
+  });
 
-  const response = await axios.post<Game[]>(
-    "https://api.igdb.com/v4/games",
-    body,
-    { headers }
-  );
+  if (!response.ok) throw new Error();
 
-  console.log(response.data);
-};
+  return response.json() as Promise<Game[]>;
+}
 
-main();
+const games = await fetchGames();
+
+console.log(games);
 ```
 
 ## Scripts
@@ -74,14 +74,17 @@ export interface Game {
   /** The bundles this game is a part of */
   bundles?: number[] | Game[];
 
-  /** The category of this game */
-  category?: GameCategory;
+  /** @deprecated Use game_type instead */
+  category?: GameCategoryEnum;
 
   /** Hash of the object */
   checksum?: string;
 
-  /** The series the game belongs to */
+  /** @deprecated Use collections instead */
   collection?: number | Collection;
+
+  /** The collections that this game is in. */
+  collections?: number[] | Collection[];
 
   /** The cover of this game */
   cover?: number | Cover;
@@ -104,7 +107,7 @@ export interface Game {
   /** The first release date for this game */
   first_release_date?: number;
 
-  /** Number of people following a game */
+  /** @deprecated - To be removed */
   follows?: number;
 
   /** Forks of this game */
@@ -119,8 +122,17 @@ export interface Game {
   /** The game engine used in this game */
   game_engines?: number[] | GameEngine[];
 
+  /** Supported game localizations for this game. A region can have at most one game localization for a given game */
+  game_localizations?: number[] | GameLocalization[];
+
   /** Modes of gameplay */
   game_modes?: number[] | GameMode[];
+
+  /** The status of the games release */
+  game_status?: number | GameStatus;
+
+  /** The type of game */
+  game_type?: number | GameType;
 
   /** Genres of the game */
   genres?: number[] | Genre[];
@@ -133,6 +145,9 @@ export interface Game {
 
   /** Associated keywords */
   keywords?: number[] | Keyword[];
+
+  /** Supported Languages for this game */
+  language_supports?: number[] | LanguageSupport[];
 
   /** Multiplayer modes for this game */
   multiplayer_modes?: number[] | MultiplayerMode[];
@@ -178,8 +193,8 @@ export interface Game {
   /** Standalone expansions of this game */
   standalone_expansions?: number[] | Game[];
 
-  /** The status of the games release */
-  status?: GameStatus;
+  /** @deprecated Use game_status instead */
+  status?: GameStatusEnum;
 
   /** A short description of a games story */
   storyline?: string;
@@ -218,8 +233,11 @@ export interface Game {
   websites?: number[] | Website[];
 }
 
-/** @see https://api-docs.igdb.com/#game-enums */
-export enum GameCategory {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#game-enums
+ */
+export enum GameCategoryEnum {
   main_game = 0,
   dlc_addon = 1,
   expansion = 2,
@@ -233,10 +251,15 @@ export enum GameCategory {
   expanded_game = 10,
   port = 11,
   fork = 12,
+  pack = 13,
+  update = 14,
 }
 
-/** @see https://api-docs.igdb.com/#game-enums */
-export enum GameStatus {
+/**
+ * @deprecated
+ * @see https://api-docs.igdb.com/#game-enums
+ */
+export enum GameStatusEnum {
   released = 0,
   alpha = 2,
   beta = 3,
